@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/VAggrippino/blog/issues"
   },
-  "homepage": "https://github.com/VAggrippino/blog#readme"
+  "homepage": "https://github.com/VAggrippino/blog#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0"
+  }
 }
