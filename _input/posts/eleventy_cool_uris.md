@@ -1,7 +1,7 @@
 ---
 title: "Eleventy's Cool URIs"
 subtitle: "Why did Eleventy create a subdirectory?"
-created: 2023-03-27
+date: 2023-03-27
 ---
 # {{ title }}
 <span class="subtitle">{{ subtitle }}</span>
