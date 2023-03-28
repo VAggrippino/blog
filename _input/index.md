@@ -1,6 +1,15 @@
 ---
 layout: base.html
-title: "Hello World"
+title: "Coding and Technologies Blog"
+subtitle: "by Vince Aggrippino"
 ---
 
-# Hello World
+# {{ title }}
+<span class="subtitle">{{subtitle}}</span>
+
+## Posts
+<ul>
+  {%- for post in collections.post -%}
+    <li><a href="{{post.page.url}}">{{ post.data.title }}</a>, posted {{post.page.date}}</li>
+  {%- endfor -%}
+</ul>
