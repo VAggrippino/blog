@@ -1,4 +1,7 @@
 module.exports = function(eleventyConfig) {
+  // Copy the wp-content folder from the exported WordPress site
+  eleventyConfig.addPassthroughCopy('wp-content')
+
   return {
     dir: {
       input: "_input",
