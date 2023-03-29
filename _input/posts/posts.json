@@ -1,4 +1,5 @@
 {
-  "layout": "base.html",
-  "tags": ["post"]
+  "layout": "post.html",
+  "tags": ["post"],
+  "permalink": "/{{ page.fileSlug }}.html"
 }
