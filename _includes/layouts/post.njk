@@ -1,0 +1,9 @@
+---
+layout: base.njk
+---
+<div class="post__title">{{ title }}</div>
+{% if subtitle %}
+  <div class="post__subtitle">{{ post.data.subtitle }}</div>
+{% endif %}
+Date: <div class="post__date">{% formatted_date date %}</div>
+{{ content | safe }}
