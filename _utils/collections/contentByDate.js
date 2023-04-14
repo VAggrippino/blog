@@ -1,6 +1,4 @@
 const dayjs = require('dayjs')
-const advancedFormat = require('dayjs/plugin/advancedFormat')
-dayjs.extend(advancedFormat)
 
 // Make an array of unique dates from the collection
 function getDates(collection, format) {
@@ -40,12 +38,10 @@ function getItemsByDate(collection, date, format){
   })
 
   const dated = filtered.map((item) => {
-    item.formatted_date = dayjs(item.page.date).format('Do MMMM YYYY - dddd')
     return item
   })
 
   const sorted = dated.sort((a, b) => b.date - a.date)
-  console.log(sorted)
 
   // Sort the filtered collection by the items' full date value
   return sorted
@@ -59,8 +55,8 @@ const contentByDateString = (collection, format) => {
     items[date] = getItemsByDate(collection, date, format)
   })
 
-  // Return an array with a single value containing an object indexed by date strings
-  return [{...items}]
+  // Return an object indexed by date strings
+  return {...items}
 }
 
 

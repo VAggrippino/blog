@@ -1,0 +1,25 @@
+---
+layout: base.njk
+title: "Coding and Technologies Blog"
+subtitle: "by Vince Aggrippino"
+
+pagination:
+  data: collections.post
+  reverse: true
+  size: 2
+  alias: posts
+
+permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 1).toString().padStart(4, 0) }}/{% endif %}index.html"
+---
+
+<h1>{{ title }}</h1>
+<div class="subtitle">{{ subtitle }}</div>
+
+{% for post in posts %}
+  <h2 class="post__title"><a href="{{ post.page.url }}">{{ post.data.title }}</a></h2>
+  {% if post.data.subtitle %}
+    <div class="post__subtitle">{{ post.data.subtitle }}</div>
+  {% endif %}
+  {% formatted_date post.data.date %}
+  {{ post.content | safe }}
+{% endfor %}
