@@ -2,11 +2,10 @@
 title: "Eleventy's Cool URIs"
 subtitle: "Why did Eleventy create a subdirectory?"
 date: 2023-03-27
-tags: ["web_development", "eleventy"]
+tags: 
+  - Web Development
+  - Eleventy
 ---
-# {{ title }}
-<span class="subtitle">{{ subtitle }}</span>
-
 While getting started with 11ty, I saw in the output folder that an `index.md`
 file would become `index.html`, as expected, but `README.md` became
 `README/index.html`. I didn't understand why there was a special case for the
