@@ -1,8 +1,11 @@
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const dayjs = require('dayjs')
 const advancedFormat = require('dayjs/plugin/advancedFormat')
 dayjs.extend(advancedFormat)
 
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(syntaxHighlight)
+
   // Copy the wp-content folder from the exported WordPress site
   eleventyConfig.addPassthroughCopy('wp-content')
 
