@@ -12,14 +12,29 @@ pagination:
 permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 1).toString().padStart(4, 0) }}/{% endif %}index.html"
 ---
 
-<h1>{{ title }}</h1>
-<div class="subtitle">{{ subtitle }}</div>
+<h1>{{ title | safe }}</h1>
+<div class="subtitle">{{ subtitle | safe }}</div>
 
 {% for post in posts %}
-  <h2 class="post__title"><a href="{{ post.page.url }}">{{ post.data.title }}</a></h2>
+  <h2 class="post__title"><a href="{{ post.page.url }}">{{ post.data.title | safe }}</a></h2>
   {% if post.data.subtitle %}
-    <div class="post__subtitle">{{ post.data.subtitle }}</div>
+    <div class="post__subtitle">{{ post.data.subtitle | safe }}</div>
   {% endif %}
   {% formatted_date post.data.date %}
   {{ post.content | safe }}
 {% endfor %}
+
+<nav aria-labelledby="pagination">
+  <div id="pagination">More: </div>
+  <ol>
+    {%- for pageEntry in pagination.pages %}
+      {% set aria_current = '' %}
+
+      {% if page.url == pagination.hrefs[loop.index0] %}
+        {% set aria_current = 'aria-current="page"' %}
+      {% endif %}
+
+      <li><a href="{{ pagination.hrefs[loop.index0] }}" {{ aria_current }}>Page {{ loop.index }}</a></li>
+{%- endfor %}
+  </ol>
+</nav>
