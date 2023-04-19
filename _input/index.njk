@@ -21,20 +21,36 @@ permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 
     <div class="post__subtitle">{{ post.data.subtitle | safe }}</div>
   {% endif %}
   {% formatted_date post.data.date %}
-  {{ post.content | safe }}
+  {{ post.content | log | safe }}
 {% endfor %}
 
 <nav aria-labelledby="pagination">
-  <div id="pagination">More: </div>
+  <div id="pagination" class="sr-only">Page Navigation: </div>
   <ol>
-    {%- for pageEntry in pagination.pages %}
-      {% set aria_current = '' %}
+    <li>
+      {%- if pagination.href.previous -%}
+        <a href="{{ pagination.href.previous }}">Previous</a>
+      {%- else -%}
+        Previous
+      {%- endif -%}
+    </li>
 
-      {% if page.url == pagination.hrefs[loop.index0] %}
-        {% set aria_current = 'aria-current="page"' %}
-      {% endif %}
+    {%- for item in pagination.pages -%}
+      {%- set current = '' -%}
 
-      <li><a href="{{ pagination.hrefs[loop.index0] }}" {{ aria_current }}>Page {{ loop.index }}</a></li>
-{%- endfor %}
+      {%- if page.url == pagination.hrefs[loop.index0] -%}
+        {%- set current = 'page' -%}
+      {%- endif -%}
+
+      <li><a href="{{ pagination.hrefs[loop.index0] }}" aria-current="{{ current }}">{{ loop.index }}</a></li>
+    {%- endfor -%}
+
+    <li>
+      {%- if pagination.href.next -%}
+        <a href="{{ pagination.href.next }}">Next</a>
+      {%- else -%}
+        Next
+      {%- endif %}
+    </li>
   </ol>
 </nav>
