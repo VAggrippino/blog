@@ -32,6 +32,8 @@ module.exports = function(eleventyConfig) {
     return dayjs(date).format('Do MMMM YYYY - dddd')
   })
 
+  eleventyConfig.setLayoutResolution(false)
+
   return {
     dir: {
       input: "_input",
