@@ -1,0 +1,25 @@
+---js
+{
+    layout: "base.njk",
+    title: "Posts from a certain date",
+    pagination: {
+        data: "collections.contentByMonth",
+        size: 1,
+        alias: "month",
+    },
+    permalink: "{{ month }}/index.html",
+    eleventyComputed: {
+        // This doesn't work. `title` ends up empty
+        title: data => `title from ${data.month}`,
+        ectitle: data => `eleventyComputed title from ${data.month}`,
+    },
+}
+---
+<h1>Title: {{title}}</h1>
+<h1>ECTitle: {{ectitle}}</h1>
+<h2>Posts in {{ month | plainEnglishMonth }}</h2>
+{% for post in collections.contentByMonth[month] %}
+    <article>
+        {{ post.content | safe }}
+    </article>
+{% endfor %}
