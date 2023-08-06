@@ -3,11 +3,11 @@ const dayjs = require('dayjs')
 const advancedFormat = require('dayjs/plugin/advancedFormat')
 dayjs.extend(advancedFormat)
 
-module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(syntaxHighlight)
+module.exports = function (eleventyConfig) {
+    eleventyConfig.addPlugin(syntaxHighlight)
 
-  // Copy the wp-content folder from the exported WordPress site
-  eleventyConfig.addPassthroughCopy('wp-content')
+    // Copy the wp-content folder from the exported WordPress site
+    eleventyConfig.addPassthroughCopy('wp-content')
 
     // Copy the CSS
     eleventyConfig.addPassthroughCopy('css')
@@ -36,6 +36,9 @@ module.exports = function(eleventyConfig) {
   })
 
   eleventyConfig.setLayoutResolution(false)
+
+    // Posts imported from WordPress had the "post" layout
+    eleventyConfig.addLayoutAlias('post', 'post.njk')
 
   return {
     dir: {

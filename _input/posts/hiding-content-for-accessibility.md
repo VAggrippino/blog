@@ -2,6 +2,7 @@
 title: Hiding Content for Accessibility
 subtitle: Implementing <code>.sr-only</code> <em>The Right Way</em>™️
 date: 2023-04-15
+published: true
 ---
 Sometimes a website that seems clear and easy to use for sighted users can cause
 some confusion for those who rely on a screen reader for navigation.

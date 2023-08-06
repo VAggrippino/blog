@@ -15,19 +15,19 @@ permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 
 <h1>{{ title | safe }}</h1>
 <div class="subtitle">{{ subtitle | safe }}</div>
 
-{% for post in posts %}
+{%- for post in posts -%}
   <h2 class="post__title"><a href="{{ post.page.url }}">{{ post.data.title | safe }}</a></h2>
-  {% if post.data.subtitle %}
-    <div class="post__subtitle">{{ post.data.subtitle | safe }}</div>
+  {%- if post.data.subtitle -%}
+    <div class="post__subtitle">{{- post.data.subtitle | safe -}}</div>
   {% endif %}
-  {% formatted_date post.data.date %}
+  {%- formatted_date post.data.date -%}
   {%- if post.data.excerpt -%}
-    {{ post.data.excerpt | safe }}
+    {{- post.data.excerpt | safe -}}
     <a href="{{ post.page.url }}">Read More...</a>
   {%- else -%}
-    {{ post.content | safe }}
+    {{- post.content | safe -}}
   {%- endif -%}
-{% endfor %}
+{%- endfor -%}
 
 <nav aria-labelledby="pagination">
   <div id="pagination" class="sr-only">Page Navigation: </div>

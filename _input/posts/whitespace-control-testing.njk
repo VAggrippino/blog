@@ -1,0 +1,34 @@
+---
+title: Whitespace Control Testing
+eleventyExcludeFromCollections: true
+---
+
+<div>
+  {% for i in [1,2,3,4,5] %}
+    {{ i }}
+  {% endfor %}
+</div>
+
+<div>
+  {% for i in [1,2,3,4,5] -%}
+    {{ i }}
+  {%- endfor %}
+</div>
+
+<div>
+  {%- for i in [1,2,3,4,5] %}
+    {{ i }}
+  {%- endfor %}
+</div>
+
+<div>
+  {% for i in [1,2,3,4,5] -%}
+    {{ i }}
+  {% endfor -%}
+</div>
+
+<div>
+  {%- for i in [1,2,3,4,5] -%}
+    {{ i }}
+  {%- endfor -%}
+</div>
