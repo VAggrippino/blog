@@ -1,18 +1,24 @@
 ---
-title: "Vince Aggrippino: Programming and Technology"
+default_title: "Vince Aggrippino: Programming and Technology"
 ---
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
-  <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-okaidia.min.css">
-  <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-  {{ content | safe }}
-  <script src="https://unpkg.com/browse/prismjs@1.29.0/components/prism-core.min.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {%- if title -%}
+                {{ title | safe }}
+            {%- else -%}
+                {{ default_title | safe }}
+            {%- endif -%}
+        </title>
+        <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-okaidia.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+    {{ content | safe }}
+    <script src="https://unpkg.com/browse/prismjs@1.29.0/components/prism-core.min.js"></script>
+    </body>
 </html>
