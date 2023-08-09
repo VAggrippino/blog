@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eleventy's Cool URIs</title>
+        <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-okaidia.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        
+<div class="post__date">Date: 27th March 2023 - Monday</div>
+<p>While getting started with 11ty, I saw in the output folder that an <code>index.md</code>
+file would become <code>index.html</code>, as expected, but <code>README.md</code> became
+<code>README/index.html</code>. I didn't understand why there was a special case for the
+README file.</p>
+<p>It took me a minute, but I <a href="https://www.11ty.dev/docs/permalinks/#cool-uris-dont-change">found it</a>
+with a reference to an article at the W3C stating (among other things) that cool
+URIs don't have file extensions.</p>
+<p>Okay. I get it. I would've expected something like that to be my job, not the
+tool's, but it makes sense and I agree. But what do I do if I really want to
+have a named output file. There's gotta be a way. Well, scroll down. The <code>permalink</code> <em>front matter</em> value allows me to specify the relative URL of the file that will be generated.</p>
+
+
+        <!-- Prism.js Syntax Highlighter - https://prismjs.com/ -->
+        <script src="https://unpkg.com/browse/prismjs@1.29.0/components/prism-core.min.js"></script>
+    </body>
+</html>

@@ -16,7 +16,7 @@ tags:
     - portfolio
 published: true
 ---
-
+## {{ title }}
 What am I supposed to put in my portfolio? Ideally, I’d have several projects that I built while learning as well as links to past employers’ websites that I contributed to. I should also have some testimonials from people I’ve worked with in the past, but I don’t have any of this.
 
 <div class="wp-block-jetpack-markdown">My professional history is too far in the past. My previous employers have either been bought / merged / closed or have moved far past my contributions.

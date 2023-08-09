@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eleventy: Setting the permalink in the directory data</title>
+        <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-okaidia.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        
+<div class="post__date">Date: 29th March 2023 - Wednesday</div>
+<p>The permalink for all templates in a directory can be set in a template directory data file. This can be used along with data variables to generate the ideal URLs.</p>
+<p>For example, if you have pages in a <code>posts</code> subdirectory, but you want those pages to be at the root of the generated site, you might use something like this:</p>
+<p>File: <code>posts/posts.json</code></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"permalink"</span><span class="token operator">:</span> <span class="token string">"/.html"</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Source: <a href="https://github.com/11ty/eleventy/issues/1783#issuecomment-842669102">GitHub thread</a></p>
+
+
+        <!-- Prism.js Syntax Highlighter - https://prismjs.com/ -->
+        <script src="https://unpkg.com/browse/prismjs@1.29.0/components/prism-core.min.js"></script>
+    </body>
+</html>

@@ -17,8 +17,9 @@ tags:
     - HowTo
     - VSCode
     - WSL
+published: true
 ---
-
+## {{ title }}
 > Linux is a cancer that attaches itself in an intellectual property sense to everything it touches.
 > 
 > <cite>Steve Ballmer, Microsoft CEO, June 2001</cite>

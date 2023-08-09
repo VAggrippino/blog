@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Use Vim as a Pager</title>
+        <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-okaidia.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        
+<div class="post__date">Date: 22nd April 2023 - Saturday</div>
+<p>I wanted to be able to scroll a <code>man</code> page in the terminal with my mouse wheel. While looking for a setting to change I learned that Vim can be used as a pager allowing mouse support and much more.
+Inspired by <a href="https://vim.fandom.com/wiki/Using_vim_as_a_man-page_viewer_under_Unix">this entry at the Vim Tips Wiki</a>, I decided to set it up for myself, but with a few minor changes. I did all this in WSL with Ubuntu 20.04.6 and Zsh on Windows 11, but it should work as well with any Unix or Linux variant:</p>
+<p><code>~/.zshrc</code>:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">PAGER</span><span class="token operator">=</span><span class="token string">"/bin/sh -c <span class="token entity" title="\&quot;">\"</span>unset PAGER;col -b -x | vim -R \
+    -c 'set ft=man mouse=a nonumber t_te=' \
+    -c 'highlight Normal ctermbg=NONE guibg=NONE' \
+    -c 'map q :q&lt;CR>' \
+    -c 'map &lt;SPACE> &lt;C-D>' \
+    -c 'map b &lt;C-U>' \
+    -c 'nmap K :Man &lt;C-R>=expand(<span class="token entity" title="\\">\\</span><span class="token entity" title="\&quot;">\"</span>&lt;cword><span class="token entity" title="\\">\\</span><span class="token entity" title="\&quot;">\"</span>)&lt;CR>&lt;CR>' -<span class="token entity" title="\&quot;">\"</span>"</span></code></pre>
+<p>This is very similar to what was documented in the Vim Tips Wiki, but I've made a few changes to suit my needs...</p>
+<ul>
+<li><code>/bin/sh -c</code> executes a command with the most basic shell on the system (Bash on most modern systems)</li>
+<li><code>col -b -x</code> filters out reverse line feeds used by <code>man</code> to show underlined text when outputting directly to the console.</li>
+<li><code>vim -R</code> starts Vim in read-only mode
+<ul>
+<li>I initially replaced this with <code>nvim</code>, but the key mapping for the <code>q</code> key doesn't work with Neovim.</li>
+</ul>
+</li>
+<li><code>-c 'set ft=man mouse=a nonumber t_te='</code>
+<ul>
+<li><code>-c</code>: executes a command in Vim. This line <code>set</code>s a few options</li>
+<li><code>ft=man</code> (a.k.a. <code>filetype=man</code>) enables proper syntax highlighting for <code>man</code> pages</li>
+<li><code>mouse=a</code>: enables mouse support for all editor modes</li>
+<li><code>nonumber</code>: turns off the line numbers I usually have enabled for editing code</li>
+<li><code>t_te=</code>: disables clearing the screen when Vim exits
+<ul>
+<li>From this answer on the Vi and Vim Stack Exchange: <a href="https://vi.stackexchange.com/a/435/6330">vi.stackexchange.com/a/435/6330</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>-c 'highlight Normal ctermbg=NONE guibg=NONE'</code>: This disables the background color that I use in the editor when editing code so that my terminal transparency is still in effect.</li>
+<li>The rest of the lines change some key mappings so that it works in a familiar way if you're used to <code>less</code> (the default pager for <code>man</code> pages)</li>
+</ul>
+
+
+        <!-- Prism.js Syntax Highlighter - https://prismjs.com/ -->
+        <script src="https://unpkg.com/browse/prismjs@1.29.0/components/prism-core.min.js"></script>
+    </body>
+</html>

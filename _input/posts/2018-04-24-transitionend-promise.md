@@ -18,7 +18,7 @@ tags:
     - programming
     - webd
 ---
-
+## {{ title }}
 I’m working on a page that displays thumbnail images. When I click on a thumbnail I want it to show an <g class="gr_ gr_27 gr-alert gr_spell gr_inline_cards gr_run_anim ContextualSpelling ins-del" data-gr-id="27" id="27">info box</g> containing more image details. I’m using a CSS transition on the <g class="gr_ gr_28 gr-alert gr_spell gr_inline_cards gr_run_anim ContextualSpelling ins-del" data-gr-id="28" id="28">info box</g> and I want to populate the image details while the <g class="gr_ gr_29 gr-alert gr_spell gr_inline_cards gr_run_anim ContextualSpelling ins-del" data-gr-id="29" id="29">info box</g> is hidden. If the <g class="gr_ gr_30 gr-alert gr_spell gr_inline_cards gr_run_anim ContextualSpelling ins-del" data-gr-id="30" id="30">info box</g> is already visible from clicking on a different thumbnail, I need to hide it first and populate the image details after the transition completes.
 
 Here’s some pseudocode that shows what I want to happen…

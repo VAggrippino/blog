@@ -10,7 +10,9 @@ inline_featured_image:
     - '0'
 categories:
     - 'Social Media'
+published: true
 ---
+## {{ title }}
 
 I subscribe / follow / participate in a lot of technology focused forums and groups throughout the World Wide Web. It is my feeling that they should be good places to make friends and ask questions of people who have similar interests and knowledge to share.
 

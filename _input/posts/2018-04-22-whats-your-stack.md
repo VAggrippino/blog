@@ -16,6 +16,7 @@ tags:
     - Web Development
 published: true
 ---
+## {{ title }}
  Years ago, I proudly applied the <abbr title="Linux, Apache, MySQL, PHP">LAMP</abbr> stack to all of my web development efforts. Never mind that it was smack dab in the middle of the time when PHP deserved its bad reputation and most, if not all, of the code that I <g class="gr_ gr_53 gr-alert gr_gramm gr_inline_cards gr_run_anim Punctuation only-ins replaceWithoutSep" data-gr-id="53" id="53">wrote</g> was as bad as the worst out there. I was making money. I was confident, working steadily, and proud of my work.
 
 Times have changed. I took some time off from working and quite literally forgot everything I knew about Web Development. It was time to do some retraining.

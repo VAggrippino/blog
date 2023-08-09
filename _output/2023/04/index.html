@@ -12,19 +12,6 @@
         <h2>Posts from April 2023</h2>
 
     <article>
-        <p>I am getting more comfortable with <a href="https://github.com/tmux/tmux/wiki"><code>tmux</code></a> and I want to make sure I don't forget to use it when I'm at the command prompt. So, I made a simple Bash script to automatically connect to an existing session or start a new session when I start my terminal:</p>
-<p><code>tmux-start.sh</code>:</p>
-<pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
-tmux <span class="token function">ls</span> <span class="token operator">></span> /dev/null <span class="token punctuation">;</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> tmux attach <span class="token operator">||</span> tmux</code></pre>
-<ul>
-<li><code>tmux ls</code> will list existing sessions, but I'm dumping that output and just using its return value which will be <code>0</code> if there are any existing sessions.</li>
-<li><code>$?</code> is the return value of the previous command</li>
-<li><code>&amp;&amp;</code> ... <code>||</code> is basically equivalent to a ternary operator in other programming languages</li>
-</ul>
-
-    </article>
-
-    <article>
         <p>I wanted to be able to scroll a <code>man</code> page in the terminal with my mouse wheel. While looking for a setting to change I learned that Vim can be used as a pager allowing mouse support and much more.
 Inspired by <a href="https://vim.fandom.com/wiki/Using_vim_as_a_man-page_viewer_under_Unix">this entry at the Vim Tips Wiki</a>, I decided to set it up for myself, but with a few minor changes. I did all this in WSL with Ubuntu 20.04.6 and Zsh on Windows 11, but it should work as well with any Unix or Linux variant:</p>
 <p><code>~/.zshrc</code>:</p>
@@ -59,6 +46,19 @@ Inspired by <a href="https://vim.fandom.com/wiki/Using_vim_as_a_man-page_viewer_
 </li>
 <li><code>-c 'highlight Normal ctermbg=NONE guibg=NONE'</code>: This disables the background color that I use in the editor when editing code so that my terminal transparency is still in effect.</li>
 <li>The rest of the lines change some key mappings so that it works in a familiar way if you're used to <code>less</code> (the default pager for <code>man</code> pages)</li>
+</ul>
+
+    </article>
+
+    <article>
+        <p>I am getting more comfortable with <a href="https://github.com/tmux/tmux/wiki"><code>tmux</code></a> and I want to make sure I don't forget to use it when I'm at the command prompt. So, I made a simple Bash script to automatically connect to an existing session or start a new session when I start my terminal:</p>
+<p><code>tmux-start.sh</code>:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+tmux <span class="token function">ls</span> <span class="token operator">></span> /dev/null <span class="token punctuation">;</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> tmux attach <span class="token operator">||</span> tmux</code></pre>
+<ul>
+<li><code>tmux ls</code> will list existing sessions, but I'm dumping that output and just using its return value which will be <code>0</code> if there are any existing sessions.</li>
+<li><code>$?</code> is the return value of the previous command</li>
+<li><code>&amp;&amp;</code> ... <code>||</code> is basically equivalent to a ternary operator in other programming languages</li>
 </ul>
 
     </article>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Coding and Technologies Blog</title>
+        <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-okaidia.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <div class="archives">
+    <h4>Content Archives</h4>
+    <ul>
+        
+            <li>
+                <a href="/2023/">2023</a> (6)
+                <ul>
+                    
+                        
+                            <li><a href="/2023/04/">2023/04</a> (4)</li>
+                        
+                    
+                        
+                            <li><a href="/2023/03/">2023/03</a> (2)</li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                </ul>
+            </li>
+        
+            <li>
+                <a href="/2022/">2022</a> (2)
+                <ul>
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="/2022/09/">2022/09</a> (1)</li>
+                        
+                    
+                        
+                            <li><a href="/2022/01/">2022/01</a> (1)</li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                </ul>
+            </li>
+        
+            <li>
+                <a href="/2021/">2021</a> (6)
+                <ul>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="/2021/08/">2021/08</a> (6)</li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                </ul>
+            </li>
+        
+            <li>
+                <a href="/2019/">2019</a> (9)
+                <ul>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="/2019/12/">2019/12</a> (1)</li>
+                        
+                    
+                        
+                            <li><a href="/2019/11/">2019/11</a> (1)</li>
+                        
+                    
+                        
+                            <li><a href="/2019/09/">2019/09</a> (1)</li>
+                        
+                    
+                        
+                            <li><a href="/2019/06/">2019/06</a> (1)</li>
+                        
+                    
+                        
+                            <li><a href="/2019/05/">2019/05</a> (4)</li>
+                        
+                    
+                        
+                            <li><a href="/2019/02/">2019/02</a> (1)</li>
+                        
+                    
+                        
+                    
+                        
+                    
+                </ul>
+            </li>
+        
+            <li>
+                <a href="/2018/">2018</a> (7)
+                <ul>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="/2018/04/">2018/04</a> (7)</li>
+                        
+                    
+                        
+                    
+                </ul>
+            </li>
+        
+            <li>
+                <a href="/2014/">2014</a> (1)
+                <ul>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="/2014/02/">2014/02</a> (1)</li>
+                        
+                    
+                </ul>
+            </li>
+        
+    </ul>
+</div>
+
+<h1>Coding and Technologies Blog</h1>
+<div class="subtitle">by Vince Aggrippino</div>
+
+<h2 class="post__title"><a href="/2023/03/eleventy-setting-the-permalink-in-the-directory-data/">Eleventy: Setting the permalink in the directory data</a></h2>29th March 2023 - Wednesday<p>The permalink for all templates in a directory can be set in a template directory data file. This can be used along with data variables to generate the ideal URLs.</p>
+<p>For example, if you have pages in a <code>posts</code> subdirectory, but you want those pages to be at the root of the generated site, you might use something like this:</p>
+<p>File: <code>posts/posts.json</code></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"permalink"</span><span class="token operator">:</span> <span class="token string">"/.html"</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Source: <a href="https://github.com/11ty/eleventy/issues/1783#issuecomment-842669102">GitHub thread</a></p>
+<h2 class="post__title"><a href="/2023/03/eleventy-cool-uris/">Eleventy's Cool URIs</a></h2><div class="post__subtitle">Why did Eleventy create a subdirectory?</div>
+    27th March 2023 - Monday<p>While getting started with 11ty, I saw in the output folder that an <code>index.md</code>
+file would become <code>index.html</code>, as expected, but <code>README.md</code> became
+<code>README/index.html</code>. I didn't understand why there was a special case for the
+README file.</p>
+<p>It took me a minute, but I <a href="https://www.11ty.dev/docs/permalinks/#cool-uris-dont-change">found it</a>
+with a reference to an article at the W3C stating (among other things) that cool
+URIs don't have file extensions.</p>
+<p>Okay. I get it. I would've expected something like that to be my job, not the
+tool's, but it makes sense and I agree. But what do I do if I really want to
+have a named output file. There's gotta be a way. Well, scroll down. The <code>permalink</code> <em>front matter</em> value allows me to specify the relative URL of the file that will be generated.</p>
+<nav aria-labelledby="pagination">
+  <div id="pagination" class="sr-only">Page Navigation: </div>
+  <ol>
+    <li><a href="/page-0002/">Previous</a></li><li><a href="/" aria-current="">1</a></li><li><a href="/page-0002/" aria-current="">2</a></li><li><a href="/page-0003/" aria-current="page">3</a></li><li><a href="/page-0004/" aria-current="">4</a></li><li><a href="/page-0005/" aria-current="">5</a></li><li><a href="/page-0006/" aria-current="">6</a></li><li><a href="/page-0007/" aria-current="">7</a></li><li><a href="/page-0008/" aria-current="">8</a></li><li><a href="/page-0009/" aria-current="">9</a></li><li><a href="/page-0010/" aria-current="">10</a></li><li><a href="/page-0011/" aria-current="">11</a></li><li><a href="/page-0012/" aria-current="">12</a></li><li><a href="/page-0013/" aria-current="">13</a></li><li><a href="/page-0014/" aria-current="">14</a></li><li><a href="/page-0015/" aria-current="">15</a></li><li><a href="/page-0016/" aria-current="">16</a></li><li><a href="/page-0004/">Next</a>
+    </li>
+  </ol>
+</nav>
+
+        <!-- Prism.js Syntax Highlighter - https://prismjs.com/ -->
+        <script src="https://unpkg.com/browse/prismjs@1.29.0/components/prism-core.min.js"></script>
+    </body>
+</html>

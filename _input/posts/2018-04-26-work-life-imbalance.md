@@ -17,7 +17,7 @@ tags:
     - motivation
 published: true
 ---
-
+## {{ title }}
 You’re watching YouTube when you see a strange video entitled “No matter what, the work stays on!” …
 
 The scene opens to a large set of balance scales resting on a low platform. A man puts a big shiny metal weight embossed with the word “work” on the left side of the scales. Next to it, he puts another weight. This one is marked “learning”.

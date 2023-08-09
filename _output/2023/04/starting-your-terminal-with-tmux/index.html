@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Starting Your Terminal with tmux</title>
+        <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-okaidia.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        
+<div class="post__date">Date: 22nd April 2023 - Saturday</div>
+<p>I am getting more comfortable with <a href="https://github.com/tmux/tmux/wiki"><code>tmux</code></a> and I want to make sure I don't forget to use it when I'm at the command prompt. So, I made a simple Bash script to automatically connect to an existing session or start a new session when I start my terminal:</p>
+<p><code>tmux-start.sh</code>:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+tmux <span class="token function">ls</span> <span class="token operator">></span> /dev/null <span class="token punctuation">;</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> tmux attach <span class="token operator">||</span> tmux</code></pre>
+<ul>
+<li><code>tmux ls</code> will list existing sessions, but I'm dumping that output and just using its return value which will be <code>0</code> if there are any existing sessions.</li>
+<li><code>$?</code> is the return value of the previous command</li>
+<li><code>&amp;&amp;</code> ... <code>||</code> is basically equivalent to a ternary operator in other programming languages</li>
+</ul>
+
+
+        <!-- Prism.js Syntax Highlighter - https://prismjs.com/ -->
+        <script src="https://unpkg.com/browse/prismjs@1.29.0/components/prism-core.min.js"></script>
+    </body>
+</html>

@@ -11,8 +11,9 @@ inline_featured_image:
 image: /wp-content/uploads/2019/06/JFGI_RTFM_LMGTFY_Sad-min.jpg
 categories:
     - 'Social Media'
+published: true
 ---
-
+## {{ title }}
 Online tech groups are filled with people who have similar interests and knowledge to share. They should be good places to find inspiration, learn, make friends, and even start a career, but there’s a disturbing undercurrent of disdain for members with less experience. Elitist jerks with bad attitudes leaving rude comments could ruin it for everyone.
 
 Unfortunately, I see a disappointing number of unfriendly responses that I tend to think of as “[The Asshole Response](https://www.aggrippino.com/the-asshole-response/)“. These responses are usually very short and often make use of acronyms like RTFM and reference URLs like <abbr title="Let Me Google That For You">[LMGTFY](https://lmgtfy.app/)</abbr>. Sometimes they aren’t responses at all, but just links to some third-party site without any explanation. At its worst, this is tantamount to bullying and could stop good people from taking part in the community.

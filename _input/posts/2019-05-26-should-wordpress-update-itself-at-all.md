@@ -17,8 +17,9 @@ tags:
     - security
     - SSH
     - wordpress
+published: true
 ---
-
+## {{ title }}
 Most of the time, when you need to update a plugin, a theme, or even WordPress core, you just click an update button and the rest is handled *automagically*. This works because web hosts usually set the web server to use the same user as the one that owns the files. This has some inherent security problems.
 
 [My current hosting provider](https://www.nearlyfreespeech.net/) takes an *opinionated* approach to security which, among other things, breaks WordPress’ automated updates by default. They even discourage the use of FTP, calling it “[an obsolete protocol that should never be used](https://members.nearlyfreespeech.net/forums/viewtopic.php?t=10232&highlight=wordpress+ftp#50031)“.

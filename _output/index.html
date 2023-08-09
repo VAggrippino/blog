@@ -14,15 +14,33 @@
     <ul>
         
             <li>
-                <a href="/2023/">2023</a>
+                <a href="/2023/">2023</a> (6)
                 <ul>
                     
                         
-                            <li><a href="/2023/04/">2023/04</a></li>
+                            <li><a href="/2023/04/">2023/04</a> (4)</li>
                         
                     
                         
-                            <li><a href="/2023/03/">2023/03</a></li>
+                            <li><a href="/2023/03/">2023/03</a> (2)</li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -33,7 +51,7 @@
             </li>
         
             <li>
-                <a href="/2019/">2019</a>
+                <a href="/2022/">2022</a> (2)
                 <ul>
                     
                         
@@ -41,7 +59,27 @@
                         
                     
                         
-                            <li><a href="/2019/02/">2019/02</a></li>
+                            <li><a href="/2022/09/">2022/09</a> (1)</li>
+                        
+                    
+                        
+                            <li><a href="/2022/01/">2022/01</a> (1)</li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
                         
                     
                         
@@ -50,7 +88,7 @@
             </li>
         
             <li>
-                <a href="/2018/">2018</a>
+                <a href="/2021/">2021</a> (6)
                 <ul>
                     
                         
@@ -60,7 +98,140 @@
                         
                     
                         
-                            <li><a href="/2018/04/">2018/04</a></li>
+                    
+                        
+                            <li><a href="/2021/08/">2021/08</a> (6)</li>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                </ul>
+            </li>
+        
+            <li>
+                <a href="/2019/">2019</a> (9)
+                <ul>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="/2019/12/">2019/12</a> (1)</li>
+                        
+                    
+                        
+                            <li><a href="/2019/11/">2019/11</a> (1)</li>
+                        
+                    
+                        
+                            <li><a href="/2019/09/">2019/09</a> (1)</li>
+                        
+                    
+                        
+                            <li><a href="/2019/06/">2019/06</a> (1)</li>
+                        
+                    
+                        
+                            <li><a href="/2019/05/">2019/05</a> (4)</li>
+                        
+                    
+                        
+                            <li><a href="/2019/02/">2019/02</a> (1)</li>
+                        
+                    
+                        
+                    
+                        
+                    
+                </ul>
+            </li>
+        
+            <li>
+                <a href="/2018/">2018</a> (7)
+                <ul>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="/2018/04/">2018/04</a> (7)</li>
+                        
+                    
+                        
+                    
+                </ul>
+            </li>
+        
+            <li>
+                <a href="/2014/">2014</a> (1)
+                <ul>
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                            <li><a href="/2014/02/">2014/02</a> (1)</li>
                         
                     
                 </ul>
@@ -70,7 +241,9 @@
 </div>
 
 <h1>Coding and Technologies Blog</h1>
-<div class="subtitle">by Vince Aggrippino</div><h2 class="post__title"><a href="/2023/04/use-vim-as-a-pager/">Use Vim as a Pager</a></h2>22nd April 2023 - Saturday<p>I wanted to be able to scroll a <code>man</code> page in the terminal with my mouse wheel. While looking for a setting to change I learned that Vim can be used as a pager allowing mouse support and much more.
+<div class="subtitle">by Vince Aggrippino</div>
+
+<h2 class="post__title"><a href="/2023/04/use-vim-as-a-pager/">Use Vim as a Pager</a></h2>22nd April 2023 - Saturday<p>I wanted to be able to scroll a <code>man</code> page in the terminal with my mouse wheel. While looking for a setting to change I learned that Vim can be used as a pager allowing mouse support and much more.
 Inspired by <a href="https://vim.fandom.com/wiki/Using_vim_as_a_man-page_viewer_under_Unix">this entry at the Vim Tips Wiki</a>, I decided to set it up for myself, but with a few minor changes. I did all this in WSL with Ubuntu 20.04.6 and Zsh on Windows 11, but it should work as well with any Unix or Linux variant:</p>
 <p><code>~/.zshrc</code>:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">PAGER</span><span class="token operator">=</span><span class="token string">"/bin/sh -c <span class="token entity" title="\&quot;">\"</span>unset PAGER;col -b -x | vim -R \
@@ -117,7 +290,7 @@ tmux <span class="token function">ls</span> <span class="token operator">></span
 <nav aria-labelledby="pagination">
   <div id="pagination" class="sr-only">Page Navigation: </div>
   <ol>
-    <li>Previous</li><li><a href="/" aria-current="page">1</a></li><li><a href="/page-0002/" aria-current="">2</a></li><li><a href="/page-0003/" aria-current="">3</a></li><li><a href="/page-0004/" aria-current="">4</a></li><li><a href="/page-0005/" aria-current="">5</a></li><li><a href="/page-0006/" aria-current="">6</a></li><li><a href="/page-0002/">Next</a>
+    <li>Previous</li><li><a href="/" aria-current="page">1</a></li><li><a href="/page-0002/" aria-current="">2</a></li><li><a href="/page-0003/" aria-current="">3</a></li><li><a href="/page-0004/" aria-current="">4</a></li><li><a href="/page-0005/" aria-current="">5</a></li><li><a href="/page-0006/" aria-current="">6</a></li><li><a href="/page-0007/" aria-current="">7</a></li><li><a href="/page-0008/" aria-current="">8</a></li><li><a href="/page-0009/" aria-current="">9</a></li><li><a href="/page-0010/" aria-current="">10</a></li><li><a href="/page-0011/" aria-current="">11</a></li><li><a href="/page-0012/" aria-current="">12</a></li><li><a href="/page-0013/" aria-current="">13</a></li><li><a href="/page-0014/" aria-current="">14</a></li><li><a href="/page-0015/" aria-current="">15</a></li><li><a href="/page-0016/" aria-current="">16</a></li><li><a href="/page-0002/">Next</a>
     </li>
   </ol>
 </nav>

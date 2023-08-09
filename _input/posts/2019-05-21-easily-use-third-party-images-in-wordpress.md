@@ -12,8 +12,9 @@ tags:
     - learning
     - plugins
     - wordpress
+published: true
 ---
-
+## {{ title }}
 <figure class="alignleft">
 
   ![](/wp-content/uploads/2019/05/20190521_063318_WordPress_Insert_Image_from_URL_252x252-min.png)

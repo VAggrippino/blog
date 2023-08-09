@@ -14,8 +14,9 @@ categories:
 tags:
     - AdSense
     - wordpress
+published: true
 ---
-
+## {{ title }}
 I’ve been putting some effort into bringing my blog back to life. I’d like it to be a source of income, so I started looking into Google AdSense.
 
 A few days later, I received an email telling me “Your site isn’t ready to show ads” because of a violation of Google’s Site Behavior policy regarding navigation:

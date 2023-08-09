@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hiding Content for Accessibility</title>
+        <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-okaidia.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        
+<div class="post__date">Date: 15th April 2023 - Saturday</div>
+<p>Sometimes a website that seems clear and easy to use for sighted users can cause
+some confusion for those who rely on a screen reader for navigation.</p>
+<p>In addition to <a href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html">semantic elements</a>,
+we need to <a href="https://www.w3.org/WAI/tutorials/page-structure/labels/">label regions</a>
+to make a page easier to navigate.</p>
+<p>When content is added for screen readers that would seem redundant to sighted
+users, or otherwise disrupt the design, it should be visually hidden.  These
+styles are recommended by WebAIM for hiding content off-screen:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.sr-only</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> -10000px<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In <a href="https://webaim.org/techniques/css/invisiblecontent/">CSS in Action</a>
+WebAIM covers this and several other techniques for visually hiding content.</p>
+
+
+        <!-- Prism.js Syntax Highlighter - https://prismjs.com/ -->
+        <script src="https://unpkg.com/browse/prismjs@1.29.0/components/prism-core.min.js"></script>
+    </body>
+</html>

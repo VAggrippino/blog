@@ -17,7 +17,7 @@ tags:
     - wordpress
 published: true
 ---
-
+## {{ title }}
 I recently spent some time researching and testing free WordPress hosting services. My goal was to find information for people who have never had a website before. I’ve used [000webhost](https://www.000webhost.com/) before, but I hadn’t checked out any other options in many years. I figured it was time to do a little comparison shopping. From this experience, I drew some interesting conclusions.
 
 <div style="background-color: beige; padding: 1rem 1rem 1px 1rem; box-shadow: 0 0.25rem 0.25rem 1px rgba(0, 0, 0, 0.3);">## tl;dr

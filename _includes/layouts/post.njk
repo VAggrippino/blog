@@ -1,23 +1,13 @@
 ---
 layout: base.njk
 ---
-{%- if image -%}
-  {% set alt = 'Image imported from WordPress blog' %}
-  {% if imageAlt %}
-    {% set alt = imageAlt %}
-  {% endif %}
+{% if image -%}
+    {% set alt = 'Image imported from WordPress blog' %}
+    {% if imageAlt %}
+        {% set alt = imageAlt %}
+    {% endif %}
 
-  <img alt="{{ alt }}" src="{{ image }}">
-{% endif %}
-<h1 class="post__title">
-  {%- if HTMLTitle -%}
-    {{ HTMLTitle | safe }}
-  {%- else -%}
-    {{ title | safe }}
-  {%- endif -%}
-</h1>
-{% if subtitle %}
-  <div class="post__subtitle">{{ subtitle | safe }}</div>
+    <img alt="{{ alt }}" src="{{ image }}">
 {% endif %}
 <div class="post__date">Date: {% formatted_date date %}</div>
 {{ content | safe }}
