@@ -1,9 +1,11 @@
 ---
 layout: base.njk
+tags: years
 pagination:
     data: collections.contentByYear
     size: 1
     alias: year
+    addAllPagesToCollections: true
 permalink: "{{ year }}/index.html"
 eleventyComputed:
     title: "Posts from {{ year }}"

@@ -1,10 +1,12 @@
 ---js
 {
     layout: "base.njk",
+    tags: "months",
     pagination: {
         data: "collections.contentByMonth",
         size: 1,
         alias: "month",
+        addAllPagesToCollections: true,
     },
     permalink: "{{ month }}/index.html",
     eleventyComputed: {

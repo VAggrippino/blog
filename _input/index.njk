@@ -11,6 +11,23 @@ pagination:
 
 permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 1).toString().padStart(4, 0) }}/{% endif %}index.html"
 ---
+<div class="archives">
+    <h4>Content Archives</h4>
+    <ul>
+        {% for year in collections.years | reverse %}
+            <li>
+                <a href="{{ year.page.url }}">{{ year.data.year }}</a>
+                <ul>
+                    {% for month in collections.months | reverse %}
+                        {% if year.data.year in month.data.month %}
+                            <li><a href="{{ month.page.url }}">{{ month.data.month }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 
 <h1>{{ title | safe }}</h1>
 <div class="subtitle">{{ subtitle | safe }}</div>
