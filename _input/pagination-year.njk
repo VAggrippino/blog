@@ -1,0 +1,16 @@
+---
+layout: base.njk
+pagination:
+    data: collections.contentByYear
+    size: 1
+    alias: year
+permalink: "{{ year }}/index.html"
+eleventyComputed:
+    title: "Posts from {{ year }}"
+---
+<h2>{{ title }}</h2>
+{% for post in collections.contentByYear[year] %}
+    <article>
+        {{ post.content | safe }}
+    </article>
+{% endfor %}

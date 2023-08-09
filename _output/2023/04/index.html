@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Posts from April 2023</title>
+        <link rel="stylesheet" href="https://unpkg.com/prismjs@1.29.0/themes/prism-okaidia.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+    <h2>Posts from April 2023</h2>
+
+    <article>
+        <p>I am getting more comfortable with <a href="https://github.com/tmux/tmux/wiki"><code>tmux</code></a> and I want to make sure I don't forget to use it when I'm at the command prompt. So, I made a simple Bash script to automatically connect to an existing session or start a new session when I start my terminal:</p>
+<p><code>tmux-start.sh</code>:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+tmux <span class="token function">ls</span> <span class="token operator">></span> /dev/null <span class="token punctuation">;</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> tmux attach <span class="token operator">||</span> tmux</code></pre>
+<ul>
+<li><code>tmux ls</code> will list existing sessions, but I'm dumping that output and just using its return value which will be <code>0</code> if there are any existing sessions.</li>
+<li><code>$?</code> is the return value of the previous command</li>
+<li><code>&amp;&amp;</code> ... <code>||</code> is basically equivalent to a ternary operator in other programming languages</li>
+</ul>
+
+    </article>
+
+    <article>
+        <p>I wanted to be able to scroll a <code>man</code> page in the terminal with my mouse wheel. While looking for a setting to change I learned that Vim can be used as a pager allowing mouse support and much more.
+Inspired by <a href="https://vim.fandom.com/wiki/Using_vim_as_a_man-page_viewer_under_Unix">this entry at the Vim Tips Wiki</a>, I decided to set it up for myself, but with a few minor changes. I did all this in WSL with Ubuntu 20.04.6 and Zsh on Windows 11, but it should work as well with any Unix or Linux variant:</p>
+<p><code>~/.zshrc</code>:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">PAGER</span><span class="token operator">=</span><span class="token string">"/bin/sh -c <span class="token entity" title="\&quot;">\"</span>unset PAGER;col -b -x | vim -R \
+    -c 'set ft=man mouse=a nonumber t_te=' \
+    -c 'highlight Normal ctermbg=NONE guibg=NONE' \
+    -c 'map q :q&lt;CR>' \
+    -c 'map &lt;SPACE> &lt;C-D>' \
+    -c 'map b &lt;C-U>' \
+    -c 'nmap K :Man &lt;C-R>=expand(<span class="token entity" title="\\">\\</span><span class="token entity" title="\&quot;">\"</span>&lt;cword><span class="token entity" title="\\">\\</span><span class="token entity" title="\&quot;">\"</span>)&lt;CR>&lt;CR>' -<span class="token entity" title="\&quot;">\"</span>"</span></code></pre>
+<p>This is very similar to what was documented in the Vim Tips Wiki, but I've made a few changes to suit my needs...</p>
+<ul>
+<li><code>/bin/sh -c</code> executes a command with the most basic shell on the system (Bash on most modern systems)</li>
+<li><code>col -b -x</code> filters out reverse line feeds used by <code>man</code> to show underlined text when outputting directly to the console.</li>
+<li><code>vim -R</code> starts Vim in read-only mode
+<ul>
+<li>I initially replaced this with <code>nvim</code>, but the key mapping for the <code>q</code> key doesn't work with Neovim.</li>
+</ul>
+</li>
+<li><code>-c 'set ft=man mouse=a nonumber t_te='</code>
+<ul>
+<li><code>-c</code>: executes a command in Vim. This line <code>set</code>s a few options</li>
+<li><code>ft=man</code> (a.k.a. <code>filetype=man</code>) enables proper syntax highlighting for <code>man</code> pages</li>
+<li><code>mouse=a</code>: enables mouse support for all editor modes</li>
+<li><code>nonumber</code>: turns off the line numbers I usually have enabled for editing code</li>
+<li><code>t_te=</code>: disables clearing the screen when Vim exits
+<ul>
+<li>From this answer on the Vi and Vim Stack Exchange: <a href="https://vi.stackexchange.com/a/435/6330">vi.stackexchange.com/a/435/6330</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>-c 'highlight Normal ctermbg=NONE guibg=NONE'</code>: This disables the background color that I use in the editor when editing code so that my terminal transparency is still in effect.</li>
+<li>The rest of the lines change some key mappings so that it works in a familiar way if you're used to <code>less</code> (the default pager for <code>man</code> pages)</li>
+</ul>
+
+    </article>
+
+    <article>
+        <p><a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> templating with
+<a href="https://www.11ty.dev/">Eleventy</a> is a powerful combination for content
+creation but I've noticed an oddity with
+<em><a href="https://mozilla.github.io/nunjucks/templating.html#whitespace-control">whitespace control</a></em>.</p>
+<p>It doesn't work like I expected it to. I'd like to complain that it's poorly
+documented but if I were given the task of documenting how this works, I'd
+struggle to get it right. Here are some examples based on the simple example in
+the documentation...</p>
+<p>No dashes:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  {% for i in [1,2,3,4,5] %}
+    {{ i }}
+  {% endfor %}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Result:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  
+    1
+  
+    2
+  
+    3
+  
+    4
+  
+    5
+  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Even the blank lines have a 2-space indent.</p>
+<hr>
+<p>Dashes at the end of the opening tag and the beginning of the closing tag. This is the documented example:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  {% for i in [1,2,3,4,5] -%}
+    {{ i }}
+  {%- endfor %}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Result:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  12345
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>I expected it to remove the 2-space indent from the output, but this is arguably the way it's documented. The 2-digit indent produced is the same two spaces before the <code>{% for</code> tag.</p>
+<hr>
+<p>Dashes at the beginnings of the opening and closing tags:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  {%- for i in [1,2,3,4,5] %}
+    {{ i }}
+  {%- endfor %}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Result:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    1
+    2
+    3
+    4
+    5
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>My first impression of this is that it didin't do anything. There are four spaces before the variable tag in the input and four spaces before the number in the output. However, I'm starting to understand how this works. It removed the whitespace before the first bracket of the <code>for</code> tag and between the last bracket of the variable tag and the first bracket of the <code>endfor</code> tag.</p>
+<hr>
+<p>Dashes at the ends of the loop tags:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  {% for i in [1,2,3,4,5] -%}
+    {{ i }}
+  {% endfor -%}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Result:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  1
+  2
+  3
+  4
+  5
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Huh!? Those spaces don't make any sense at first glance. There aren't two spaces anywhere but in the output! Where did the spaces before the closing <code>&lt;/div&gt;</code> come from?!... Do you see what mistake I was making yet? I do. This removed the whitespace between the closing bracket of the <code>for</code> tag and the opening bracket of the variable tag as well as after the closing bracket of the <code>endfor</code> tag (there wasn't any there anyway). The spaces rendered in the output are from before the <code>{% endfor</code> tag.</p>
+<hr>
+<p>Dashes everywhere:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  {%- for i in [1,2,3,4,5] -%}
+    {{ i }}
+  {%- endfor -%}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Result:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>12345<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Finally! That's what I thought I was going to get in the first place. It removed all the leading and trailing whitespace.</p>
+<hr>
+<h3>Summary</h3>
+<p>I thought the <code>for</code>/<code>endfor</code> lines didn't count. I thought that, like a JavaScript <code>for</code> loop, all that mattered was what was inside the block. In a Nunjucks template everything that's outside of the <code>{% %}</code> is rendered. And the documentation says that. So, a dash at the beginning of the tag eliminates the whitespace before the tag and a dash at the end of the tag eliminates the whitespace after the tag. Now that I understand it, I think the only thing I could do to improve the documentation is add some more examples.</p>
+
+    </article>
+
+    <article>
+        <p>Sometimes a website that seems clear and easy to use for sighted users can cause
+some confusion for those who rely on a screen reader for navigation.</p>
+<p>In addition to <a href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html">semantic elements</a>,
+we need to <a href="https://www.w3.org/WAI/tutorials/page-structure/labels/">label regions</a>
+to make a page easier to navigate.</p>
+<p>When content is added for screen readers that would seem redundant to sighted
+users, or otherwise disrupt the design, it should be visually hidden.  These
+styles are recommended by WebAIM for hiding content off-screen:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.sr-only</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> -10000px<span class="token punctuation">;</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In <a href="https://webaim.org/techniques/css/invisiblecontent/">CSS in Action</a>
+WebAIM covers this and several other techniques for visually hiding content.</p>
+
+    </article>
+
+
+    <script src="https://unpkg.com/browse/prismjs@1.29.0/components/prism-core.min.js"></script>
+    </body>
+</html>
