@@ -14,18 +14,18 @@ permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 
 <div class="archives">
     <h4>Content Archives</h4>
     <ul>
-        {% for year in collections.years | reverse %}
+        {%- for year in collections.years | reverse -%}
             <li>
                 <a href="{{ year.page.url }}">{{ year.data.year }}</a> ({{ collections.contentByYear[year.data.year] | length }})
                 <ul>
-                    {% for month in collections.months | reverse %}
-                        {% if year.data.year in month.data.month %}
+                    {%- for month in collections.months | reverse -%}
+                        {%- if year.data.year in month.data.month -%}
                             <li><a href="{{ month.page.url }}">{{ month.data.month }}</a> ({{ collections.contentByMonth[month.data.month] | length }})</li>
-                        {% endif %}
-                    {% endfor %}
+                        {%- endif -%}
+                    {%- endfor -%}
                 </ul>
             </li>
-        {% endfor %}
+        {%- endfor -%}
     </ul>
 </div>
 
