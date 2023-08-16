@@ -17,7 +17,7 @@
 }
 ---
 <h2>{{ title }}</h2>
-{% for post in collections.contentByMonth[month] %}
+{% for post in collections.contentByMonth[month] | reverse %}
     <article>
         {{ post.content | safe }}
     </article>

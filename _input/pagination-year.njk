@@ -11,7 +11,7 @@ eleventyComputed:
     title: "Posts from {{ year }}"
 ---
 <h2>{{ title }}</h2>
-{% for post in collections.contentByYear[year] %}
+{% for post in collections.contentByYear[year] | reverse %}
     <article>
         {{ post.content | safe }}
     </article>

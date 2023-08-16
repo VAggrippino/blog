@@ -12,121 +12,103 @@
         <h2>Posts from 2019</h2>
 
     <article>
-        <h2>How to really check with JavaScript if CSS failed to load from a CDN</h2>
-<figure class="wp-block-image size-full">![](https://i0.wp.com/www.aggrippino.com/wp-content/uploads/2019/12/error-loading-min-e1629184314699.jpg?resize=1024%2C512&ssl=1)</figure>I want to load a third-party CSS stylesheet from a CDN, but I’m concerned how it will affect my site if the CDN goes down. *How do I use JavaScript to check if a CSS file has loaded* so I can load a local fallback instead?
-<p>This can’t be a new idea. I can get the answer from a web search, can’t I? …</p>
-<h2>Incorrect Solution #1</h2>
-<p>If I search the web for an answer, I can find many variations of this incorrect solution:</p>
-<div class="incorrect-solution-target"></div>```
-<pre class="EnlighterJSRAW incorrect-solution" data-enlighter-group="" data-enlighter-highlight="" data-enlighter-language="js" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-theme="" data-enlighter-title="">// Just an example:
-cdnUrl = `https://cdnjs.vinceflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css`;
-localUrl = `css/all.min.css`;
-<p>let loaded = false;
-for ( var i = 0; i &lt; document.styleSheets.length, i++ ) {
-if ( document.styleSheets[i].href === cdnUrl ) {
-loaded = true;
+        <h2>WordPress: Where to host, at first...</h2>
+<p>I recently spent some time researching and testing free WordPress hosting services. My goal was to find information for people who have never had a website before. I’ve used <a href="https://www.000webhost.com/">000webhost</a> before, but I hadn’t checked out any other options in many years. I figured it was time to do a little comparison shopping. From this experience, I drew some interesting conclusions.</p>
+<div style="background-color: beige; padding: 1rem 1rem 1px 1rem; box-shadow: 0 0.25rem 0.25rem 1px rgba(0, 0, 0, 0.3);">## tl;dr
+<ul>
+<li>Day 1: <a href="https://wordpress.com/">WordPress.com</a></li>
+<li>2 weeks: <a href="https://www.000webhost.com/">000webhost</a></li>
+<li>3 months: Paid hosting with a well-researched, reliable privider that provides the right features for your</li>
+</ul>
+</div>
+<h2>I expected 000webhost to be worse…</h2>
+<p>The first time I used 000webhost was probably close to 10 years ago. I haven’t checked any other options for free PHP hosting in years. In that time, a lot has changed on the web and I expected a competitor to stand out by offering better features. Instead, I discovered that other hosts typically provide an antiquated <a href="https://www.aggrippino.com/wp-content/uploads/2022/09/cpanel_lantern.svg">cPanel management interface</a> that feels slow and sluggish by comparison to today’s responsive single page applications. 000webhost has an easy to use interface that works and responds well.</p>
+<h2>I expected WordPress.com to be better…</h2>
+<p>WordPress.com should be the prime example of Automattic demonstrating their flagship product at its best. Instead, they’re presenting WordPress as if it was a Freemium commercial product instead of Open Source Software. With limitations on themes, no plugins, no direct monetization, a significantly altered administration interface, and too little information about their hosting service they do little to create a positive impression of either WordPress, the software, or WordPress.com as a hosting provider.</p>
+<p>However, WordPress.com still offers the quickest and easiest path to a WordPress-powered site. Create an account then choose a subdomain name and your site is ready for you to use. If you’ve never had a website before, this is the best way.</p>
+<h2>Then what?</h2>
+<p>As I mentioned, this information is only for absolute beginners. If you’re serious about your website, you need paid hosting with a reliability guarantee and a support team. Define the needs of your site’s business model and target audience. Then you need to do research. There are many different types of hosting and thousands of competing hosts, all offering different services. You’ll need to consider page loading speed, storage space, server reliability, and many other factors. You can’t choose easily without some education and experience.</p>
+
+    </article>
+
+    <article>
+        <h2>Easily Use Third-Party Images in WordPress?</h2>
+<figure class="alignleft">
+<p><img src="/wp-content/uploads/2019/05/20190521_063318_WordPress_Insert_Image_from_URL_252x252-min.png" alt=""></p>
+  <figcaption>WordPress’ Insert Image from URL</figcaption>
+</figure>
+<p>Let’s say, for example, I have a <em>photo</em> on Facebook that I want to use in a WordPress post. It’s <em>Public</em> so anyone with the URL can view it without even logging in. It’s not very difficult. Just get the image URL, add a new image block, and use the URL instead of uploading or selecting from the existing Media Library.</p>
+<p>This seems to me like a common use case. It’s not just Facebook, either. There are countless popular websites that let people post their own images. Many of them are more focused on images than Facebook. It could be easier. It’d be great if there was an alternative <em>Facebook Image</em> block that I could add to my post. So, there must be a plugin for that, right? Well, maybe, but there are hundreds of Facebook plugins. Their descriptions mention galleries and feeds and posts, but none of them seem to succinctly say “Use Facebook photos in your posts.” So, let the trial and error begin.</p>
+
+    </article>
+
+    <article>
+        <h2>WordPress Sample Code on GitHub</h2>
+<p>Considering #WordPress Plugin Development? Do a <a href="https://github.com/search?q=wordpress+plugin&amp;type=Repositories">search on GitHub for “<em>WordPress plugin</em>“</a> and find all the sample code you ever wanted.</p>
+
+    </article>
+
+    <article>
+        <h2>WordPress Update Failed</h2>
+<div class="wp-block-image"><figure class="aligncenter">![WordPress update error message](https://i0.wp.com/www.aggrippino.com/wp-content/uploads/2019/05/20190522_101438_WordPress_Update_failed-min.png?resize=661%2C300&ssl=1)</figure></div><div style="background-color: beige; padding: 0 1rem 1rem 1rem; margin: 1rem; box-shadow: 0 0.25rem 0.25rem 1px rgba(0, 0, 0, 0.3);">## tl;dr
+<p>When WordPress fails to do something automatically, it’s almost always a permissions problem. This is no exception.</p>
+<p>I haven’t found an easy and secure way to enable automatic WordPress updates. The only way I have found is to make all WordPress files and folders writable by the web server process…</p>
+<p><code>   chgrp -R web ... </code> This isn’t a good solution, but it may be the only option for clients that can’t do updates any other way. It’s too insecure and it’s not suitable for a production website. I need to keep looking for a better way. I’ll be looking into other ways of <em>Hardening WordPress</em> as well.</p>
+</div>## Rejected “Solutions”:
+<h3>Change all the permissions</h3>
+<p>Any answer that includes <code>chmod -R 777 ...</code> or <code>chgrp -R ...</code> introduces a security problem. If you do this, anyone who visits your site can potentially add/delete/modify files and run arbitrary code.</p>
+<p>By the way, most web hosts run their services in a Unix-like environment. If you’re not familiar with <a href="https://en.wikipedia.org/wiki/File_system_permissions#Traditional_Unix_permissions">Unix file and directory permissions</a>, it’s a good idea to learn.</p>
+<h3>Manual upgrade</h3>
+<p>If you say the only solution is to do a manual upgrade, you’re basically giving up on WordPress’ automated tools. It doesn’t fix anything and I’d almost certainly face the same problem next time it’s time for an upgrade.</p>
+<h3>Don’t use automation</h3>
+<p>Some would say that we sacrifice security when we rely on WordPress’ automated tools for installing themes, installing plugins, or performing updates. We should perform all server-side administration manually because it’s more secure.</p>
+<p>Well, that’s a valid point. However, I’d argue that just by using WordPress we paint a big target on our website for hackers.</p>
+<p>A site built with read-only files written in static HTML and CSS and no database would no doubt be more secure than any WordPress site, but we trad some of that security for the power and convenience of WordPress. There should be a way to balance security and convenience.</p>
+<p>This option also doesn’t work for clients who are less technically inclined. I build sites for people who aren’t interested in learning about SSH, tar, and gzip. And I’m not interested in performing manual updates for a hundred clients with automatic updates disabled.</p>
+<h2>Finding my own way:</h2>
+<p>I started looking into the code with <code>update-core.php</code>, which was mentioned in the error message. I’m not going to go into detail on the whole convoluted process, but the gist of it is that it checks a list of files for writability and if it finds any that can’t be overwritten, it appends their names to the end of the error message.</p>
+<p>In this case there’s only one file, but I want to try and make this future-proof if I can.</p>
+<p>Here’s a relevant block of the code from <code>wp-admin\includes\update-core.php</code>:</p>
+<pre><code>&lt;pre class=&quot;wp-block-code&quot;&gt;```
+// If we're using the direct method, we can predict write failures that are due to permissions.
+if ( $check_is_writable &amp;&amp; 'direct' === $wp_filesystem-&gt;method ) {
+  $files_writable = array_filter( $check_is_writable, array( $wp_filesystem, 'is_writable' ) );
+  if ( $files_writable !== $check_is_writable ) {
+    $files_not_writable = array_diff_key( $check_is_writable, $files_writable );
+    foreach ( $files_not_writable as $relative_file_not_writable =&gt; $file_not_writable ) {
+      // If the writable check failed, chmod file to 0644 and try again, same as copy_dir().
+      $wp_filesystem-&gt;chmod( $file_not_writable, FS_CHMOD_FILE );
+      if ( $wp_filesystem-&gt;is_writable( $file_not_writable ) ) {
+        unset( $files_not_writable[ $relative_file_not_writable ] );
+      }
+    }
+
+    // Store package-relative paths (the key) of non-writable files in the WP_Error object.
+    $error_data = version_compare( $old_wp_version, '3.7-beta2', '&gt;' ) ? array_keys( $files_not_writable ) : '';
+
+    if ( $files_not_writable ) {
+      return new WP_Error( 'files_not_writable', __( 'The update cannot be installed because we will be unable to copy some files. This is usually due to inconsistent file permissions.' ), implode( ', ', $error_data ) );
+    }
+  }
 }
-}
-if ( !loaded ) {
-const localCss = document.createElement(<code>link</code>);
-localCss.rel = <code>stylesheet</code>;
-localCss.href = localUrl;
-document.querySelector(<code>head</code>).appendChild(localCss);
-}</p>
+</code></pre>
 <pre><code>
-If the document’s stylesheets don’t contain one with a URL matching the one from the CDN, add a reference to the local one. It doesn’t work, though. `document.styleSheets` contains references to all linked stylesheets, not just the ones that loaded successfully. Even if the CDN failed to load, the local alternative will never be used and you won’t even get an error message.
+## Conclusion:
 
-## Incorrect Solution #2
-
-&lt;div class=&quot;incorrect-solution-target&quot;&gt;&lt;/div&gt;```
-&lt;pre class=&quot;EnlighterJSRAW incorrect-solution&quot; data-enlighter-group=&quot;&quot; data-enlighter-highlight=&quot;&quot; data-enlighter-language=&quot;js&quot; data-enlighter-linenumbers=&quot;&quot; data-enlighter-lineoffset=&quot;&quot; data-enlighter-theme=&quot;&quot; data-enlighter-title=&quot;&quot;&gt;// Just an example:
-cdnUrl = `https://cdnjs.vinceflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css`;
-localUrl = `css/all.min.css`;
-
-let loaded = false;
-for ( var i = 0; i &amp;lt; document.styleSheets.length, i++ ) {
-  if ( document.styleSheets[i].href === cdnUrl ) {
-    if (document.styleSheets[i].cssRules !== null) {
-      loaded = true;
-    }
-  }
-}
-if ( !loaded ) {
-  const localCss = document.createElement(`link`);
-  localCss.rel = `stylesheet`;
-  localCss.href = localUrl;
-  document.querySelector(`head`).appendChild(localCss);
-}
-</code></pre>
-<p>This one looks a little better… <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet">CSSStyleSheet</a>s have a <code>cssRules</code> property which shows the rules associated with the stylesheet. If it didn’t load, it’ll be <code>null</code>, right? Wrong. In Firefox, <code>cssRules</code> is an empty array when the stylesheet fails to load. In Google Chrome, you get an “Uncaught DOMException” because a <code>CSSStyleSheet</code> that failed to load doesn’t have a <code>cssRules</code> property.</p>
-<h2>A real solution?</h2>
-<pre><code>&lt;pre class=&quot;EnlighterJSRAW&quot; data-enlighter-group=&quot;&quot; data-enlighter-highlight=&quot;&quot; data-enlighter-language=&quot;js&quot; data-enlighter-linenumbers=&quot;&quot; data-enlighter-lineoffset=&quot;&quot; data-enlighter-theme=&quot;&quot; data-enlighter-title=&quot;&quot;&gt;export function cssFallback(cdnUrl, localPath) {
-  // Create a new link tag and append it to the document head
-  const loadAlternate = () =&amp;gt; {
-    console.log(`Loading ${localPath}.`);
-    const link = document.createElement(`link`);
-    link.rel = `stylesheet`;
-    link.href = localPath;
-    document.querySelector(`head`).appendChild(link);
-  }
-
-  // Identify the CDN stylesheet
-  const stylesheet = Array.from(document.styleSheets).filter((s) =&amp;gt; s.href === cdnUrl)[0];
-
-  try {
-    // If I can access cssRules and it's not empty, the CDN CSS loaded
-    if ( stylesheet.cssRules.length === 0 ) {
-      console.log(`The cssRules for ${cdnUrl} is empty.`)
-      loadAlternate();
-    }
-  } catch (e) {
-    console.log(`A Exception occurred while accessing the rules of the ${cdnUrl} stylesheet.`);
-    console.log(e);
-    loadAlternate();
-  }
-}
-</code></pre>
-<p>If the <code>cssRules</code> is an empty array, the CDN stylesheet failed to load in Mozilla Firefox. If there’s an Exception when we try to access the <code>cssRules</code>, the CDN stylesheet failed to load in Google Chrome.</p>
+A WordPress update might need to overwrite any of the files that are part of the installation. It might need to add new files, too. As far as I can tell, the only way is to make all of these files and directories writable by the (UNIX / Linux) user that runs the website. That’s not a solution.</code></pre>
 
     </article>
 
     <article>
-        <h2>Should We Avoid Ternary Operators?</h2>
-<figure class="wp-block-image size-large">![](https://i0.wp.com/www.aggrippino.com/wp-content/uploads/2021/08/ternary_operator_carbon.jpg?resize=1024%2C512&ssl=1)</figure>I recently read a Facebook post which suggested it was better to use a ternary operator instead of an if…else statement whenever the result would be a single line of code. That doesn’t seem right.
-<p>I’ve noticed this trend toward shorter, smaller code, and I understand the appeal. If I can do in one line of code what used to take six lines, it feels more efficient. However, when it comes to executing the code, there’s no performance difference between an if…else statement and a ternary operator.</p>
-<h2>Code Quality Perspective</h2>
-<p>Measuring programming progress by lines of code is like measuring aircraft building progress by weight.<br>
-― Bill Gates</p>
-<p>It doesn’t seem very long ago that Software Engineers conflated the number of lines written with the skill of the programmer or the quality of the code… More lines of code meant better code. In Bill Gates’ quote, he’s addressing this misconception, but the point is the difference in perspective from then to now.</p>
-<h2>Ternary Operator Benefits</h2>
-<p><strong>Efficiency</strong>… but not really<br>
-The ternary operator feels like a hack that makes our code more efficient. However, efficiency is most important during execution. During development, the most important thing is readable code.</p>
-<p><strong>Smaller code</strong><br>
-A web page does load faster if the browser has less to download, but this type of optimization is the job of a minification tool, not a programmer. And it is well known that “<a href="https://en.wikiquote.org/wiki/Donald_Knuth#Computer_Programming_as_an_Art_(1974)">premature optimization is the root of all evil</a>“.</p>
-<p><strong>Readability</strong>… but not usually<br>
-Sometimes compressing a complex concept into a single line makes code easier to understand. This is the only time the ternary operator should actually be used. It’s easy to abuse the ternary operator, though, resulting in unreadable code.</p>
-<h2>Ternary Operator Facts</h2>
-<h3>In favor of ternary operators</h3>
-<ul>
-<li>Sometimes using the ternary operator makes code easier to understand by compressing a complex concept into a single statement.</li>
-</ul>
-<h3>In favor of if…else statements</h3>
-<ul>
-<li>Usually the if…else syntax is easier to understand. The separation between the condition and each action allows the reader to pause and consider each action and when it occurs.</li>
-<li>The ternary operator further encourages terse code which is harder to read and can lead to mistakes like failing to consider <em><a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">falsy</a></em> values.</li>
-<li>A ternary operator may be easy to understand, and look nicer, when it’s first written. However, it’ll be more difficult to understand for another developer, or even the original developer when returning to the code months later.</li>
-</ul>
+        <h2>Should WordPress update itself at all?</h2>
+<p>Most of the time, when you need to update a plugin, a theme, or even WordPress core, you just click an update button and the rest is handled <em>automagically</em>. This works because web hosts usually set the web server to use the same user as the one that owns the files. This has some inherent security problems.</p>
+<p><a href="https://www.nearlyfreespeech.net/">My current hosting provider</a> takes an <em>opinionated</em> approach to security which, among other things, breaks WordPress’ automated updates by default. They even discourage the use of FTP, calling it “<a href="https://members.nearlyfreespeech.net/forums/viewtopic.php?t=10232&amp;highlight=wordpress+ftp#50031">an obsolete protocol that should never be used</a>“.</p>
+<h2>Direct file modification or FTP?</h2>
+<p>Now that I understand the cause of the problem, I can easily fix it by changing the appropriate file and directory permissions. In fact, the first solution I’d be likely to find on the web would be to just recursively remove restrictions (<code>chmod 777</code>) on certain directories. But my host’s admin team isn’t wrong. As the Hardening WordPress article at wordpress.org <a href="https://wordpress.org/support/article/hardening-wordpress/#file-permissions">explains</a> “allowing write access to your files is potentially dangerous”.</p>
+<h2>Secure Shell?</h2>
+<p>SSH seems like it should be a better solution. The login process itself is more secure than FTP and it allows you to perform updates with a different user than the one the web server uses. WordPress even has limited inbuilt support for SSH. The problem here is that it requires you to put your SSH login credentials within reach of WordPress and that usually means they’re also within reach of the entire Internet. This presents a far greater risk than file and directory permissions.</p>
 <h2>Conclusion</h2>
-<p>Of course we shouldn’t stop using ternary operators! On either side of the debate, there’s an argument for improving readability of code. So, use it when it’ll improve readability. But there are more reasons to use if…else syntax. We <em>should</em> avoid ternary operators, but it’s a guideline, not a rule. And even when considering rules, we must remember that “<a href="http://slashslash.info/2018/02/a-foolish-consistency/">A foolish consistency is the hobgoblin of little minds</a>“.</p>
-
-    </article>
-
-    <article>
-        <h2>Elitists Could Ruin Tech Communities</h2>
-<p>Online tech groups are filled with people who have similar interests and knowledge to share. They should be good places to find inspiration, learn, make friends, and even start a career, but there’s a disturbing undercurrent of disdain for members with less experience. Elitist jerks with bad attitudes leaving rude comments could ruin it for everyone.</p>
-<p>Unfortunately, I see a disappointing number of unfriendly responses that I tend to think of as “<a href="https://www.aggrippino.com/the-asshole-response/">The Asshole Response</a>“. These responses are usually very short and often make use of acronyms like RTFM and reference URLs like <abbr title="Let Me Google That For You"><a href="https://lmgtfy.app/">LMGTFY</a></abbr>. Sometimes they aren’t responses at all, but just links to some third-party site without any explanation. At its worst, this is tantamount to bullying and could stop good people from taking part in the community.</p>
-<p>For some groups, the policy clearly states that questions must be well-researched, but this is a mistake. By their very nature, public forums and groups, especially on sites like Facebook, are a waste of time for most of the participants. Anyone who participates has already decided to waste their time. So, the complaint that an unresearched question wastes the time of the community is invalid. Besides, asking and answering questions that have been answered before is the fundamental basis of all education.</p>
-<p>There’s more to a community than just questions and answers. It would be better to encourage people to ask first when they’re having a problem. When that fails, use a search engine or reference some documentation. Anyone who dismisses a question or disrespects the asker because it wasn’t well researched is degrading the community.</p>
+<p>I thought that if automated updates are a basic WordPress feature, there must be way to get it to work without compromising security. But I’ve done a lot of reading and performed a lot of trial and error. I’ve even read carefully through code to understand the process more fully. After all that, I’m beginning to agree with the idea that WordPress shouldn’t update itself. Yes, you can get it to work but there’s always a trade-off between security and convenience. It would only take one bad experience to make you regret avoiding a few manually typed SSH commands.</p>
 
     </article>
 
@@ -254,103 +236,121 @@ Now that everything’s ready to go, you have to tell VS Code which of your exte
     </article>
 
     <article>
-        <h2>Should WordPress update itself at all?</h2>
-<p>Most of the time, when you need to update a plugin, a theme, or even WordPress core, you just click an update button and the rest is handled <em>automagically</em>. This works because web hosts usually set the web server to use the same user as the one that owns the files. This has some inherent security problems.</p>
-<p><a href="https://www.nearlyfreespeech.net/">My current hosting provider</a> takes an <em>opinionated</em> approach to security which, among other things, breaks WordPress’ automated updates by default. They even discourage the use of FTP, calling it “<a href="https://members.nearlyfreespeech.net/forums/viewtopic.php?t=10232&amp;highlight=wordpress+ftp#50031">an obsolete protocol that should never be used</a>“.</p>
-<h2>Direct file modification or FTP?</h2>
-<p>Now that I understand the cause of the problem, I can easily fix it by changing the appropriate file and directory permissions. In fact, the first solution I’d be likely to find on the web would be to just recursively remove restrictions (<code>chmod 777</code>) on certain directories. But my host’s admin team isn’t wrong. As the Hardening WordPress article at wordpress.org <a href="https://wordpress.org/support/article/hardening-wordpress/#file-permissions">explains</a> “allowing write access to your files is potentially dangerous”.</p>
-<h2>Secure Shell?</h2>
-<p>SSH seems like it should be a better solution. The login process itself is more secure than FTP and it allows you to perform updates with a different user than the one the web server uses. WordPress even has limited inbuilt support for SSH. The problem here is that it requires you to put your SSH login credentials within reach of WordPress and that usually means they’re also within reach of the entire Internet. This presents a far greater risk than file and directory permissions.</p>
-<h2>Conclusion</h2>
-<p>I thought that if automated updates are a basic WordPress feature, there must be way to get it to work without compromising security. But I’ve done a lot of reading and performed a lot of trial and error. I’ve even read carefully through code to understand the process more fully. After all that, I’m beginning to agree with the idea that WordPress shouldn’t update itself. Yes, you can get it to work but there’s always a trade-off between security and convenience. It would only take one bad experience to make you regret avoiding a few manually typed SSH commands.</p>
+        <h2>Elitists Could Ruin Tech Communities</h2>
+<p>Online tech groups are filled with people who have similar interests and knowledge to share. They should be good places to find inspiration, learn, make friends, and even start a career, but there’s a disturbing undercurrent of disdain for members with less experience. Elitist jerks with bad attitudes leaving rude comments could ruin it for everyone.</p>
+<p>Unfortunately, I see a disappointing number of unfriendly responses that I tend to think of as “<a href="https://www.aggrippino.com/the-asshole-response/">The Asshole Response</a>“. These responses are usually very short and often make use of acronyms like RTFM and reference URLs like <abbr title="Let Me Google That For You"><a href="https://lmgtfy.app/">LMGTFY</a></abbr>. Sometimes they aren’t responses at all, but just links to some third-party site without any explanation. At its worst, this is tantamount to bullying and could stop good people from taking part in the community.</p>
+<p>For some groups, the policy clearly states that questions must be well-researched, but this is a mistake. By their very nature, public forums and groups, especially on sites like Facebook, are a waste of time for most of the participants. Anyone who participates has already decided to waste their time. So, the complaint that an unresearched question wastes the time of the community is invalid. Besides, asking and answering questions that have been answered before is the fundamental basis of all education.</p>
+<p>There’s more to a community than just questions and answers. It would be better to encourage people to ask first when they’re having a problem. When that fails, use a search engine or reference some documentation. Anyone who dismisses a question or disrespects the asker because it wasn’t well researched is degrading the community.</p>
 
     </article>
 
     <article>
-        <h2>WordPress Update Failed</h2>
-<div class="wp-block-image"><figure class="aligncenter">![WordPress update error message](https://i0.wp.com/www.aggrippino.com/wp-content/uploads/2019/05/20190522_101438_WordPress_Update_failed-min.png?resize=661%2C300&ssl=1)</figure></div><div style="background-color: beige; padding: 0 1rem 1rem 1rem; margin: 1rem; box-shadow: 0 0.25rem 0.25rem 1px rgba(0, 0, 0, 0.3);">## tl;dr
-<p>When WordPress fails to do something automatically, it’s almost always a permissions problem. This is no exception.</p>
-<p>I haven’t found an easy and secure way to enable automatic WordPress updates. The only way I have found is to make all WordPress files and folders writable by the web server process…</p>
-<p><code>   chgrp -R web ... </code> This isn’t a good solution, but it may be the only option for clients that can’t do updates any other way. It’s too insecure and it’s not suitable for a production website. I need to keep looking for a better way. I’ll be looking into other ways of <em>Hardening WordPress</em> as well.</p>
-</div>## Rejected “Solutions”:
-<h3>Change all the permissions</h3>
-<p>Any answer that includes <code>chmod -R 777 ...</code> or <code>chgrp -R ...</code> introduces a security problem. If you do this, anyone who visits your site can potentially add/delete/modify files and run arbitrary code.</p>
-<p>By the way, most web hosts run their services in a Unix-like environment. If you’re not familiar with <a href="https://en.wikipedia.org/wiki/File_system_permissions#Traditional_Unix_permissions">Unix file and directory permissions</a>, it’s a good idea to learn.</p>
-<h3>Manual upgrade</h3>
-<p>If you say the only solution is to do a manual upgrade, you’re basically giving up on WordPress’ automated tools. It doesn’t fix anything and I’d almost certainly face the same problem next time it’s time for an upgrade.</p>
-<h3>Don’t use automation</h3>
-<p>Some would say that we sacrifice security when we rely on WordPress’ automated tools for installing themes, installing plugins, or performing updates. We should perform all server-side administration manually because it’s more secure.</p>
-<p>Well, that’s a valid point. However, I’d argue that just by using WordPress we paint a big target on our website for hackers.</p>
-<p>A site built with read-only files written in static HTML and CSS and no database would no doubt be more secure than any WordPress site, but we trad some of that security for the power and convenience of WordPress. There should be a way to balance security and convenience.</p>
-<p>This option also doesn’t work for clients who are less technically inclined. I build sites for people who aren’t interested in learning about SSH, tar, and gzip. And I’m not interested in performing manual updates for a hundred clients with automatic updates disabled.</p>
-<h2>Finding my own way:</h2>
-<p>I started looking into the code with <code>update-core.php</code>, which was mentioned in the error message. I’m not going to go into detail on the whole convoluted process, but the gist of it is that it checks a list of files for writability and if it finds any that can’t be overwritten, it appends their names to the end of the error message.</p>
-<p>In this case there’s only one file, but I want to try and make this future-proof if I can.</p>
-<p>Here’s a relevant block of the code from <code>wp-admin\includes\update-core.php</code>:</p>
-<pre><code>&lt;pre class=&quot;wp-block-code&quot;&gt;```
-// If we're using the direct method, we can predict write failures that are due to permissions.
-if ( $check_is_writable &amp;&amp; 'direct' === $wp_filesystem-&gt;method ) {
-  $files_writable = array_filter( $check_is_writable, array( $wp_filesystem, 'is_writable' ) );
-  if ( $files_writable !== $check_is_writable ) {
-    $files_not_writable = array_diff_key( $check_is_writable, $files_writable );
-    foreach ( $files_not_writable as $relative_file_not_writable =&gt; $file_not_writable ) {
-      // If the writable check failed, chmod file to 0644 and try again, same as copy_dir().
-      $wp_filesystem-&gt;chmod( $file_not_writable, FS_CHMOD_FILE );
-      if ( $wp_filesystem-&gt;is_writable( $file_not_writable ) ) {
-        unset( $files_not_writable[ $relative_file_not_writable ] );
-      }
-    }
+        <h2>Should We Avoid Ternary Operators?</h2>
+<figure class="wp-block-image size-large">![](https://i0.wp.com/www.aggrippino.com/wp-content/uploads/2021/08/ternary_operator_carbon.jpg?resize=1024%2C512&ssl=1)</figure>I recently read a Facebook post which suggested it was better to use a ternary operator instead of an if…else statement whenever the result would be a single line of code. That doesn’t seem right.
+<p>I’ve noticed this trend toward shorter, smaller code, and I understand the appeal. If I can do in one line of code what used to take six lines, it feels more efficient. However, when it comes to executing the code, there’s no performance difference between an if…else statement and a ternary operator.</p>
+<h2>Code Quality Perspective</h2>
+<p>Measuring programming progress by lines of code is like measuring aircraft building progress by weight.<br>
+― Bill Gates</p>
+<p>It doesn’t seem very long ago that Software Engineers conflated the number of lines written with the skill of the programmer or the quality of the code… More lines of code meant better code. In Bill Gates’ quote, he’s addressing this misconception, but the point is the difference in perspective from then to now.</p>
+<h2>Ternary Operator Benefits</h2>
+<p><strong>Efficiency</strong>… but not really<br>
+The ternary operator feels like a hack that makes our code more efficient. However, efficiency is most important during execution. During development, the most important thing is readable code.</p>
+<p><strong>Smaller code</strong><br>
+A web page does load faster if the browser has less to download, but this type of optimization is the job of a minification tool, not a programmer. And it is well known that “<a href="https://en.wikiquote.org/wiki/Donald_Knuth#Computer_Programming_as_an_Art_(1974)">premature optimization is the root of all evil</a>“.</p>
+<p><strong>Readability</strong>… but not usually<br>
+Sometimes compressing a complex concept into a single line makes code easier to understand. This is the only time the ternary operator should actually be used. It’s easy to abuse the ternary operator, though, resulting in unreadable code.</p>
+<h2>Ternary Operator Facts</h2>
+<h3>In favor of ternary operators</h3>
+<ul>
+<li>Sometimes using the ternary operator makes code easier to understand by compressing a complex concept into a single statement.</li>
+</ul>
+<h3>In favor of if…else statements</h3>
+<ul>
+<li>Usually the if…else syntax is easier to understand. The separation between the condition and each action allows the reader to pause and consider each action and when it occurs.</li>
+<li>The ternary operator further encourages terse code which is harder to read and can lead to mistakes like failing to consider <em><a href="https://developer.mozilla.org/en-US/docs/Glossary/Falsy">falsy</a></em> values.</li>
+<li>A ternary operator may be easy to understand, and look nicer, when it’s first written. However, it’ll be more difficult to understand for another developer, or even the original developer when returning to the code months later.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Of course we shouldn’t stop using ternary operators! On either side of the debate, there’s an argument for improving readability of code. So, use it when it’ll improve readability. But there are more reasons to use if…else syntax. We <em>should</em> avoid ternary operators, but it’s a guideline, not a rule. And even when considering rules, we must remember that “<a href="http://slashslash.info/2018/02/a-foolish-consistency/">A foolish consistency is the hobgoblin of little minds</a>“.</p>
 
-    // Store package-relative paths (the key) of non-writable files in the WP_Error object.
-    $error_data = version_compare( $old_wp_version, '3.7-beta2', '&gt;' ) ? array_keys( $files_not_writable ) : '';
+    </article>
 
-    if ( $files_not_writable ) {
-      return new WP_Error( 'files_not_writable', __( 'The update cannot be installed because we will be unable to copy some files. This is usually due to inconsistent file permissions.' ), implode( ', ', $error_data ) );
+    <article>
+        <h2>How to really check with JavaScript if CSS failed to load from a CDN</h2>
+<figure class="wp-block-image size-full">![](https://i0.wp.com/www.aggrippino.com/wp-content/uploads/2019/12/error-loading-min-e1629184314699.jpg?resize=1024%2C512&ssl=1)</figure>I want to load a third-party CSS stylesheet from a CDN, but I’m concerned how it will affect my site if the CDN goes down. *How do I use JavaScript to check if a CSS file has loaded* so I can load a local fallback instead?
+<p>This can’t be a new idea. I can get the answer from a web search, can’t I? …</p>
+<h2>Incorrect Solution #1</h2>
+<p>If I search the web for an answer, I can find many variations of this incorrect solution:</p>
+<div class="incorrect-solution-target"></div>```
+<pre class="EnlighterJSRAW incorrect-solution" data-enlighter-group="" data-enlighter-highlight="" data-enlighter-language="js" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-theme="" data-enlighter-title="">// Just an example:
+cdnUrl = `https://cdnjs.vinceflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css`;
+localUrl = `css/all.min.css`;
+<p>let loaded = false;
+for ( var i = 0; i &lt; document.styleSheets.length, i++ ) {
+if ( document.styleSheets[i].href === cdnUrl ) {
+loaded = true;
+}
+}
+if ( !loaded ) {
+const localCss = document.createElement(<code>link</code>);
+localCss.rel = <code>stylesheet</code>;
+localCss.href = localUrl;
+document.querySelector(<code>head</code>).appendChild(localCss);
+}</p>
+<pre><code>
+If the document’s stylesheets don’t contain one with a URL matching the one from the CDN, add a reference to the local one. It doesn’t work, though. `document.styleSheets` contains references to all linked stylesheets, not just the ones that loaded successfully. Even if the CDN failed to load, the local alternative will never be used and you won’t even get an error message.
+
+## Incorrect Solution #2
+
+&lt;div class=&quot;incorrect-solution-target&quot;&gt;&lt;/div&gt;```
+&lt;pre class=&quot;EnlighterJSRAW incorrect-solution&quot; data-enlighter-group=&quot;&quot; data-enlighter-highlight=&quot;&quot; data-enlighter-language=&quot;js&quot; data-enlighter-linenumbers=&quot;&quot; data-enlighter-lineoffset=&quot;&quot; data-enlighter-theme=&quot;&quot; data-enlighter-title=&quot;&quot;&gt;// Just an example:
+cdnUrl = `https://cdnjs.vinceflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css`;
+localUrl = `css/all.min.css`;
+
+let loaded = false;
+for ( var i = 0; i &amp;lt; document.styleSheets.length, i++ ) {
+  if ( document.styleSheets[i].href === cdnUrl ) {
+    if (document.styleSheets[i].cssRules !== null) {
+      loaded = true;
     }
   }
 }
+if ( !loaded ) {
+  const localCss = document.createElement(`link`);
+  localCss.rel = `stylesheet`;
+  localCss.href = localUrl;
+  document.querySelector(`head`).appendChild(localCss);
+}
 </code></pre>
-<pre><code>
-## Conclusion:
+<p>This one looks a little better… <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet">CSSStyleSheet</a>s have a <code>cssRules</code> property which shows the rules associated with the stylesheet. If it didn’t load, it’ll be <code>null</code>, right? Wrong. In Firefox, <code>cssRules</code> is an empty array when the stylesheet fails to load. In Google Chrome, you get an “Uncaught DOMException” because a <code>CSSStyleSheet</code> that failed to load doesn’t have a <code>cssRules</code> property.</p>
+<h2>A real solution?</h2>
+<pre><code>&lt;pre class=&quot;EnlighterJSRAW&quot; data-enlighter-group=&quot;&quot; data-enlighter-highlight=&quot;&quot; data-enlighter-language=&quot;js&quot; data-enlighter-linenumbers=&quot;&quot; data-enlighter-lineoffset=&quot;&quot; data-enlighter-theme=&quot;&quot; data-enlighter-title=&quot;&quot;&gt;export function cssFallback(cdnUrl, localPath) {
+  // Create a new link tag and append it to the document head
+  const loadAlternate = () =&amp;gt; {
+    console.log(`Loading ${localPath}.`);
+    const link = document.createElement(`link`);
+    link.rel = `stylesheet`;
+    link.href = localPath;
+    document.querySelector(`head`).appendChild(link);
+  }
 
-A WordPress update might need to overwrite any of the files that are part of the installation. It might need to add new files, too. As far as I can tell, the only way is to make all of these files and directories writable by the (UNIX / Linux) user that runs the website. That’s not a solution.</code></pre>
+  // Identify the CDN stylesheet
+  const stylesheet = Array.from(document.styleSheets).filter((s) =&amp;gt; s.href === cdnUrl)[0];
 
-    </article>
-
-    <article>
-        <h2>WordPress Sample Code on GitHub</h2>
-<p>Considering #WordPress Plugin Development? Do a <a href="https://github.com/search?q=wordpress+plugin&amp;type=Repositories">search on GitHub for “<em>WordPress plugin</em>“</a> and find all the sample code you ever wanted.</p>
-
-    </article>
-
-    <article>
-        <h2>Easily Use Third-Party Images in WordPress?</h2>
-<figure class="alignleft">
-<p><img src="/wp-content/uploads/2019/05/20190521_063318_WordPress_Insert_Image_from_URL_252x252-min.png" alt=""></p>
-  <figcaption>WordPress’ Insert Image from URL</figcaption>
-</figure>
-<p>Let’s say, for example, I have a <em>photo</em> on Facebook that I want to use in a WordPress post. It’s <em>Public</em> so anyone with the URL can view it without even logging in. It’s not very difficult. Just get the image URL, add a new image block, and use the URL instead of uploading or selecting from the existing Media Library.</p>
-<p>This seems to me like a common use case. It’s not just Facebook, either. There are countless popular websites that let people post their own images. Many of them are more focused on images than Facebook. It could be easier. It’d be great if there was an alternative <em>Facebook Image</em> block that I could add to my post. So, there must be a plugin for that, right? Well, maybe, but there are hundreds of Facebook plugins. Their descriptions mention galleries and feeds and posts, but none of them seem to succinctly say “Use Facebook photos in your posts.” So, let the trial and error begin.</p>
-
-    </article>
-
-    <article>
-        <h2>WordPress: Where to host, at first...</h2>
-<p>I recently spent some time researching and testing free WordPress hosting services. My goal was to find information for people who have never had a website before. I’ve used <a href="https://www.000webhost.com/">000webhost</a> before, but I hadn’t checked out any other options in many years. I figured it was time to do a little comparison shopping. From this experience, I drew some interesting conclusions.</p>
-<div style="background-color: beige; padding: 1rem 1rem 1px 1rem; box-shadow: 0 0.25rem 0.25rem 1px rgba(0, 0, 0, 0.3);">## tl;dr
-<ul>
-<li>Day 1: <a href="https://wordpress.com/">WordPress.com</a></li>
-<li>2 weeks: <a href="https://www.000webhost.com/">000webhost</a></li>
-<li>3 months: Paid hosting with a well-researched, reliable privider that provides the right features for your</li>
-</ul>
-</div>
-<h2>I expected 000webhost to be worse…</h2>
-<p>The first time I used 000webhost was probably close to 10 years ago. I haven’t checked any other options for free PHP hosting in years. In that time, a lot has changed on the web and I expected a competitor to stand out by offering better features. Instead, I discovered that other hosts typically provide an antiquated <a href="https://www.aggrippino.com/wp-content/uploads/2022/09/cpanel_lantern.svg">cPanel management interface</a> that feels slow and sluggish by comparison to today’s responsive single page applications. 000webhost has an easy to use interface that works and responds well.</p>
-<h2>I expected WordPress.com to be better…</h2>
-<p>WordPress.com should be the prime example of Automattic demonstrating their flagship product at its best. Instead, they’re presenting WordPress as if it was a Freemium commercial product instead of Open Source Software. With limitations on themes, no plugins, no direct monetization, a significantly altered administration interface, and too little information about their hosting service they do little to create a positive impression of either WordPress, the software, or WordPress.com as a hosting provider.</p>
-<p>However, WordPress.com still offers the quickest and easiest path to a WordPress-powered site. Create an account then choose a subdomain name and your site is ready for you to use. If you’ve never had a website before, this is the best way.</p>
-<h2>Then what?</h2>
-<p>As I mentioned, this information is only for absolute beginners. If you’re serious about your website, you need paid hosting with a reliability guarantee and a support team. Define the needs of your site’s business model and target audience. Then you need to do research. There are many different types of hosting and thousands of competing hosts, all offering different services. You’ll need to consider page loading speed, storage space, server reliability, and many other factors. You can’t choose easily without some education and experience.</p>
+  try {
+    // If I can access cssRules and it's not empty, the CDN CSS loaded
+    if ( stylesheet.cssRules.length === 0 ) {
+      console.log(`The cssRules for ${cdnUrl} is empty.`)
+      loadAlternate();
+    }
+  } catch (e) {
+    console.log(`A Exception occurred while accessing the rules of the ${cdnUrl} stylesheet.`);
+    console.log(e);
+    loadAlternate();
+  }
+}
+</code></pre>
+<p>If the <code>cssRules</code> is an empty array, the CDN stylesheet failed to load in Mozilla Firefox. If there’s an Exception when we try to access the <code>cssRules</code>, the CDN stylesheet failed to load in Google Chrome.</p>
 
     </article>
 

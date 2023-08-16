@@ -12,17 +12,6 @@
         <h2>Posts from March 2023</h2>
 
     <article>
-        <p>The permalink for all templates in a directory can be set in a template directory data file. This can be used along with data variables to generate the ideal URLs.</p>
-<p>For example, if you have pages in a <code>posts</code> subdirectory, but you want those pages to be at the root of the generated site, you might use something like this:</p>
-<p>File: <code>posts/posts.json</code></p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"permalink"</span><span class="token operator">:</span> <span class="token string">"/.html"</span>
-<span class="token punctuation">}</span></code></pre>
-<p>Source: <a href="https://github.com/11ty/eleventy/issues/1783#issuecomment-842669102">GitHub thread</a></p>
-
-    </article>
-
-    <article>
         <p>While getting started with 11ty, I saw in the output folder that an <code>index.md</code>
 file would become <code>index.html</code>, as expected, but <code>README.md</code> became
 <code>README/index.html</code>. I didn't understand why there was a special case for the
@@ -33,6 +22,17 @@ URIs don't have file extensions.</p>
 <p>Okay. I get it. I would've expected something like that to be my job, not the
 tool's, but it makes sense and I agree. But what do I do if I really want to
 have a named output file. There's gotta be a way. Well, scroll down. The <code>permalink</code> <em>front matter</em> value allows me to specify the relative URL of the file that will be generated.</p>
+
+    </article>
+
+    <article>
+        <p>The permalink for all templates in a directory can be set in a template directory data file. This can be used along with data variables to generate the ideal URLs.</p>
+<p>For example, if you have pages in a <code>posts</code> subdirectory, but you want those pages to be at the root of the generated site, you might use something like this:</p>
+<p>File: <code>posts/posts.json</code></p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"permalink"</span><span class="token operator">:</span> <span class="token string">"/.html"</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Source: <a href="https://github.com/11ty/eleventy/issues/1783#issuecomment-842669102">GitHub thread</a></p>
 
     </article>
 

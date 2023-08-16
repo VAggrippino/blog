@@ -6,7 +6,7 @@ function getDates( collection, format ) {
     const dates = new Set()
 
     // Add the posts' dates to the list of dates
-    collection.getAll().forEach( (item) => {
+    collection.getAllSorted().forEach( (item) => {
         if ( 'date' in item.data &&
             item.data.tags &&
             item.data.tags.includes ( 'post' )
