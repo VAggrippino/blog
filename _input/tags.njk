@@ -1,0 +1,9 @@
+---
+layout: base.njk
+---
+<h2>Tags</h2>
+<ul>
+  {% for tag in collections | keys | regular_tags %}
+    <li><a href="/tags/{{tag | slugify}}">{{ tag }}</a> ({{ collections[tag].length }} posts)</li>
+  {% endfor %}
+</ul>

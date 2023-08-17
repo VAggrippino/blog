@@ -1,0 +1,22 @@
+---js
+{
+  layout: 'base.njk',
+  pagination: {
+    data: 'collections',
+    size: 1,
+    alias: 'tag',
+    before: function(data) {
+      return this.regular_tags(data)
+    }
+  },
+  original_permalink: '/tags/{{ tag | slugify }}/',
+  permalink: false
+}
+---
+<p>Posts tagged “{{ tag }}”:</p>
+
+{% for post in collections[tag] | reverse %}
+  {{ post.data.title }}
+  {% formatted_date post.page.date %}
+  {{ post.content | safe }}
+{% endfor %}
