@@ -3,7 +3,7 @@ pagination:
     data: collections.doublePagination
     size: 1
     alias: tag
-permalink: /double-pagination/{{ tag.tag }}/{% if tag.page > 0 %}{{ tag.page + 1 }}/{% endif %}
+permalink: /double-pagination/{{ tag.tag | slugify }}/{% if tag.page_number > 0 %}{{ tag.page_number + 1 }}/{% endif %}
 ---
 
 {% for post in tag.data %}
@@ -24,31 +24,27 @@ permalink: /double-pagination/{{ tag.tag }}/{% if tag.page > 0 %}{{ tag.page + 1
 
 <nav aria-labelledby="pagination">
     <div id="pagination" class="sr-only">Page Navigation: </div>
-        <ol>
-            <li>
-                {%- if pagination.href.previous -%}
-                    <a href="{{ pagination.href.previous }}">Previous</a>
-                {%- else -%}
-                    Previous
-                {%- endif -%}
-            </li>
+    <ul>
+        {%- for tagpage in collections.doublePagination -%}
+            {%- if tagpage.tag == tag.tag -%}
+                {%- set page_number = tagpage.page_number -%}
+                {%- set link_number = page_number + 1 -%}
 
-            {%- for item in pagination.pages -%}
-                {%- set current = '' -%}
-
-                {%- if page.url == pagination.hrefs[loop.index0] -%}
-                    {%- set current = 'page' -%}
+                {%- set link_path = tag.tag | slugify -%}
+                {%- if page_number > 0 -%}
+                    {%- set link_path = [link_path, "/", link_number] | join -%}
                 {%- endif -%}
 
-                <li><a href="{{ pagination.hrefs[loop.index0] }}" aria-current="{{ current }}">{{ loop.index }}</a></li>
-            {%- endfor -%}
+                {%- set page_url = ["/", page.fileSlug, "/", link_path] | join -%}
 
-            <li>
-                {%- if pagination.href.next -%}
-                    <a href="{{ pagination.href.next }}">Next</a>
-                {%- else -%}
-                    Next
-                {%- endif %}
-            </li>
-        </ol>
+                <li>
+                    {%- if tagpage.page_number == tag.page_number -%}
+                        {{- link_number -}}
+                    {%- else -%}
+                        <a href="{{ page_url }}">{{ link_number }}</a>
+                    {%- endif -%}
+                </li>
+            {%- endif -%}
+        {%- endfor -%}
+    </ul>
 </nav>

@@ -59,8 +59,6 @@ module.exports = function (eleventyConfig) {
                 // Convert an item.data.tags string into an array or just use it if it's already an array
                 const tags = typeof item.data.tags === 'string' ? [item.data.tags] : item.data.tags
 
-
-
                 // Add the item's tags to the set if it has been published
                 if ( item.data.published ) {
                     // Exclude the generic "post" tag
@@ -79,9 +77,9 @@ module.exports = function (eleventyConfig) {
             const items = collection.getFilteredByTag(tag)
             const pages = lodashChunk(items, pagination_size)
 
-            for ( let page = 0, max = pages.length; page < max; page++ ) {
-                const data = pages[page]
-                tagMap.push({ tag, page, data })
+            for ( let page_number = 0; page_number < pages.length; page_number++ ) {
+                const data = pages[page_number]
+                tagMap.push({ tag, page_number, data })
             }
         })
 
