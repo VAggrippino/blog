@@ -19,7 +19,8 @@
   "homepage": "https://github.com/VAggrippino/blog#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0"
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "lodash.chunk": "^4.2.0"
   },
   "dependencies": {
     "dayjs": "^1.11.7"

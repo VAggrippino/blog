@@ -1,0 +1,54 @@
+---
+pagination:
+    data: collections.doublePagination
+    size: 1
+    alias: tag
+permalink: /double-pagination/{{ tag.tag }}/{% if tag.page > 0 %}{{ tag.page + 1 }}/{% endif %}
+---
+
+{% for post in tag.data %}
+<article>
+    <h1>{{ post.data.title }}</h1>
+    <h2>{{ post.page.fileSlug }}</h2>
+    <div>
+        <h3>Tags:</h3>
+        <ul>
+            {% for tag in post.data.tags %}
+                <li>{{ tag }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <p>This post has {{ post.content | length }} characters</p>
+</article>
+{% endfor %}
+
+<nav aria-labelledby="pagination">
+    <div id="pagination" class="sr-only">Page Navigation: </div>
+        <ol>
+            <li>
+                {%- if pagination.href.previous -%}
+                    <a href="{{ pagination.href.previous }}">Previous</a>
+                {%- else -%}
+                    Previous
+                {%- endif -%}
+            </li>
+
+            {%- for item in pagination.pages -%}
+                {%- set current = '' -%}
+
+                {%- if page.url == pagination.hrefs[loop.index0] -%}
+                    {%- set current = 'page' -%}
+                {%- endif -%}
+
+                <li><a href="{{ pagination.hrefs[loop.index0] }}" aria-current="{{ current }}">{{ loop.index }}</a></li>
+            {%- endfor -%}
+
+            <li>
+                {%- if pagination.href.next -%}
+                    <a href="{{ pagination.href.next }}">Next</a>
+                {%- else -%}
+                    Next
+                {%- endif %}
+            </li>
+        </ol>
+</nav>
