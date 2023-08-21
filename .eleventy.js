@@ -86,6 +86,40 @@ module.exports = function (eleventyConfig) {
         return tagMap
     })
 
+    eleventyConfig.addFilter('sortTags', (collection) => {
+        let tags = Object.keys(collection).filter((tag) => {
+            const excluded = [
+                'all',
+                'post',
+                'months',
+                'years',
+                'doublePagination',
+            ]
+
+            let published = 0
+            if (Array.isArray(collection[tag])) {
+                collection[tag].forEach((item) => {
+                    if (item.data.published) published = published + 1
+                })
+            }
+
+            return (excluded.indexOf(tag) === -1 && published > 0)
+        })
+
+        tags.sort((a, b) => {
+            // Sort tags with the highest number of posts at the top
+            if (collection[a].length < collection[b].length) return 1
+            if (collection[a].length > collection[b].length) return -1
+
+            // If the number of posts are the same, sort by the tag
+            if (a.toLowerCase() > b.toLowerCase()) return 1
+            if (a.toLowerCase() < b.toLowerCase()) return -1
+
+            return 0
+        })
+        return Object.fromEntries(tags.map(tag => [tag, collection[tag].length]))
+    })
+
     return {
         dir: {
             input: "_input",

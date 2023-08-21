@@ -1,0 +1,5 @@
+<ol>
+{% for tag, posts in collections | sortTags %}
+    <li><a href="/double-pagination/{{ tag | slugify }}">{{ tag }} - {{ posts }} posts</a></li>
+{% endfor %}
+</ol>
