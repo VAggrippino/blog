@@ -74,7 +74,7 @@ module.exports = function (eleventyConfig) {
         const tagArray = [...tagSet]
 
         tagArray.forEach((tag) => {
-            const items = collection.getFilteredByTag(tag)
+            const items = collection.getFilteredByTag(tag).reverse()
             const pages = lodashChunk(items, pagination_size)
 
             for ( let page_number = 0; page_number < pages.length; page_number++ ) {
