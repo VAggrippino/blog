@@ -30,7 +30,7 @@ permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 
 </div>
 
 <div class="tags">
-    <h2>Popular Tags</h2>
+    <h2>Popular Topics</h2>
     <ul>
     {%- set tag_counter = 0 -%}
     {%- for tag, posts in collections | sortTags -%}
@@ -42,7 +42,7 @@ permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 
         {%- set tag_counter = tag_counter + 1 -%}
     {%- endfor -%}
     </ul>
-    <a href="/taglist">All Tags</a>
+    <a href="/taglist">All Topics</a>
 </div>
 
 <h1>{{ title | safe }}</h1>
