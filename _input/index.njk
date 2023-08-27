@@ -11,6 +11,7 @@ pagination:
 
 permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 1).toString().padStart(4, 0) }}/{% endif %}index.html"
 ---
+{%- import "tag_macros.njk" as tag_macros -%}
 <div class="archives">
     <h4>Content Archives</h4>
     <ul>
@@ -49,19 +50,21 @@ permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 
 <div class="subtitle">{{ subtitle | safe }}</div>
 
 {% for post in posts -%}
-    <h2 class="post__title"><a href="{{ post.page.url }}">{{ post.data.title | safe }}</a></h2>
-    {%- if post.data.subtitle -%}
-        <div class="post__subtitle">{{- post.data.subtitle | safe -}}</div>
-    {% endif %}
-
-    {%- formatted_date post.data.date -%}
-
-    {%- if post.data.excerpt -%}
-        {{- post.data.excerpt | safe -}}
-        <a href="{{ post.page.url }}">Read More...</a>
-    {%- else -%}
-        {{- post.content | safe -}}
-    {%- endif -%}
+    <article class="post-excerpt">
+        {%- if post.data.title -%}
+            <h1 class="post-excerpt__title">
+                <a href="{{ post.page.url }}">{{ post.data.title | safe }}</a>
+            </h1>
+        {%- endif -%}
+        {%- if post.data.subtitle -%}
+            <div class="post-excerpt__subtitle">{{ post.data.title | safe }}</div>
+        {%- endif -%}
+        {{ tag_macros.tags_list(post) }}
+        <div class="post-excerpt__excerpt">
+            {%- excerpt post -%}
+            <div><a href="{{ post.page.url }}">Read More</a></div>
+        </div>
+    </article>
 {%- endfor -%}
 
 <nav aria-labelledby="pagination">

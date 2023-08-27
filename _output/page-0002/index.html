@@ -61,27 +61,21 @@
 <h1>Coding and Technologies Blog</h1>
 <div class="subtitle">by Vince Aggrippino</div>
 
-<h2 class="post__title"><a href="/2023/04/nunjucks-whitespace-control/">Nunjucks Whitespace Control</a></h2><div class="post__subtitle">Doesn't work as expected... or does it?</div>
-    16th April 2023 - Sunday <p> Nunjucks' <a href='https://mozilla.github.io/nunjucks/templating.html#whitespace-control'>Whitespace Control</a> doesn't work the way I expected it to. So, I tried every variation of the syntax I could think of to see how it would render. </p> <a href="/2023/04/nunjucks-whitespace-control/">Read More...</a><h2 class="post__title"><a href="/2023/04/hiding-content-for-accessibility/">Hiding Content for Accessibility</a></h2><div class="post__subtitle">Implementing <code>.sr-only</code> <em>The Right Way</em>™️</div>
-    15th April 2023 - Saturday<p>Sometimes a website that seems clear and easy to use for sighted users can cause
-some confusion for those who rely on a screen reader for navigation.</p>
-<p>In addition to <a href="https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantics_in_html">semantic elements</a>,
-we need to <a href="https://www.w3.org/WAI/tutorials/page-structure/labels/">label regions</a>
-to make a page easier to navigate.</p>
-<p>When content is added for screen readers that would seem redundant to sighted
-users, or otherwise disrupt the design, it should be visually hidden.  These
-styles are recommended by WebAIM for hiding content off-screen:</p>
-<pre class="language-css"><code class="language-css"><span class="token selector">.sr-only</span> <span class="token punctuation">{</span>
-  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
-  <span class="token property">left</span><span class="token punctuation">:</span> -10000px<span class="token punctuation">;</span>
-  <span class="token property">top</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
-  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>In <a href="https://webaim.org/techniques/css/invisiblecontent/">CSS in Action</a>
-WebAIM covers this and several other techniques for visually hiding content.</p>
-<nav aria-labelledby="pagination">
+<article class="post-excerpt"><h1 class="post-excerpt__title">
+                <a href="/2023/04/nunjucks-whitespace-control/">Nunjucks Whitespace Control</a>
+            </h1><div class="post-excerpt__subtitle">Nunjucks Whitespace Control</div>
+        <div class="post-excerpt__excerpt"><a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> templating with
+<a href="https://www.11ty.dev/">Eleventy</a> is a powerful combination for content
+creation but I've noticed an oddity with
+<em><a href="https://mozilla.github.io/nunjucks/templating.html#whitespace-control">whitespace control</a></em>.<span class="continuation-ellipsis"> ...</span><div><a href="/2023/04/nunjucks-whitespace-control/">Read More</a></div>
+        </div>
+    </article><article class="post-excerpt"><h1 class="post-excerpt__title">
+                <a href="/2023/04/hiding-content-for-accessibility/">Hiding Content for Accessibility</a>
+            </h1><div class="post-excerpt__subtitle">Hiding Content for Accessibility</div>
+        <div class="post-excerpt__excerpt">Sometimes a website that seems clear and easy to use for sighted users can cause
+some confusion for those who rely on a screen reader for navigation.<span class="continuation-ellipsis"> ...</span><div><a href="/2023/04/hiding-content-for-accessibility/">Read More</a></div>
+        </div>
+    </article><nav aria-labelledby="pagination">
   <div id="pagination" class="sr-only">Page Navigation: </div>
   <ol>
     <li><a href="/">Previous</a></li><li><a href="/" aria-current="">1</a></li><li><a href="/page-0002/" aria-current="page">2</a></li><li><a href="/page-0003/" aria-current="">3</a></li><li><a href="/page-0004/" aria-current="">4</a></li><li><a href="/page-0005/" aria-current="">5</a></li><li><a href="/page-0006/" aria-current="">6</a></li><li><a href="/page-0007/" aria-current="">7</a></li><li><a href="/page-0008/" aria-current="">8</a></li><li><a href="/page-0009/" aria-current="">9</a></li><li><a href="/page-0010/" aria-current="">10</a></li><li><a href="/page-0011/" aria-current="">11</a></li><li><a href="/page-0012/" aria-current="">12</a></li><li><a href="/page-0013/" aria-current="">13</a></li><li><a href="/page-0014/" aria-current="">14</a></li><li><a href="/page-0015/" aria-current="">15</a></li><li><a href="/page-0016/" aria-current="">16</a></li><li><a href="/page-0003/">Next</a>

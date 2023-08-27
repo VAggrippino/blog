@@ -36,6 +36,8 @@ module.exports = function (eleventyConfig) {
         return dayjs(date).format('Do MMMM YYYY - dddd')
     })
 
+    eleventyConfig.addShortcode('excerpt', (post) => getExcerpt(post))
+
     // Don't support layouts without extensions
     eleventyConfig.setLayoutResolution(false)
 
@@ -130,4 +132,42 @@ module.exports = function (eleventyConfig) {
         markdownTemplateEngine: "njk",
         htmlTemplateEngine: "njk",
     }
+}
+
+function getExcerpt(post) {
+    if (!post.hasOwnProperty('content')) {
+        console.warn(`Failed to extract excerpt. Post doesn't have a "content" property.`)
+        return null
+    }
+
+    const content = post.content
+    
+    // And excerpt can be wrapped in a labeled block comment or just use the
+    // first paragraph
+    const separators = [
+        { start: `<!-- excerpt`, end: `/excerpt -->` },
+        { start: `<p>`, end: `</p>` },
+    ]
+
+    const excerpt = (function () {
+        for (const separator of separators) {
+            const start_position = content.indexOf(separator.start)
+            const end_position = content.indexOf(separator.end)
+
+            if (start_position !== -1 && end_position !== -1) {
+                return content
+                    .substring(start_position + separator.start.length, end_position)
+                    .concat('<span class="continuation-ellipsis"> ...</span>')
+            }
+        }
+        return false
+    })()
+
+    if (!excerpt) {
+        console.warn(`Failed to extract excerpt. Post doesn't have any of the specified excerpt separators.`)
+        console.warn(`Excerpt separators:`)
+        console.table(separators)
+    }
+
+    return excerpt
 }

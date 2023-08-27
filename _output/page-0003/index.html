@@ -61,25 +61,28 @@
 <h1>Coding and Technologies Blog</h1>
 <div class="subtitle">by Vince Aggrippino</div>
 
-<h2 class="post__title"><a href="/2023/03/eleventy-setting-the-permalink-in-the-directory-data/">Eleventy: Setting the permalink in the directory data</a></h2>29th March 2023 - Wednesday<p>The permalink for all templates in a directory can be set in a template directory data file. This can be used along with data variables to generate the ideal URLs.</p>
-<p>For example, if you have pages in a <code>posts</code> subdirectory, but you want those pages to be at the root of the generated site, you might use something like this:</p>
-<p>File: <code>posts/posts.json</code></p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"permalink"</span><span class="token operator">:</span> <span class="token string">"/.html"</span>
-<span class="token punctuation">}</span></code></pre>
-<p>Source: <a href="https://github.com/11ty/eleventy/issues/1783#issuecomment-842669102">GitHub thread</a></p>
-<h2 class="post__title"><a href="/2023/03/eleventy-cool-uris/">Eleventy's Cool URIs</a></h2><div class="post__subtitle">Why did Eleventy create a subdirectory?</div>
-    27th March 2023 - Monday<p>While getting started with 11ty, I saw in the output folder that an <code>index.md</code>
+<article class="post-excerpt"><h1 class="post-excerpt__title">
+                <a href="/2023/03/eleventy-setting-the-permalink-in-the-directory-data/">Eleventy: Setting the permalink in the directory data</a>
+            </h1><ul><li>
+                        <a href="/tags/eleventy">Eleventy</a>
+                    </li><li>
+                        <a href="/tags/web-development">Web Development</a>
+                    </li></ul>
+        <div class="post-excerpt__excerpt">The permalink for all templates in a directory can be set in a template directory data file. This can be used along with data variables to generate the ideal URLs.<span class="continuation-ellipsis"> ...</span><div><a href="/2023/03/eleventy-setting-the-permalink-in-the-directory-data/">Read More</a></div>
+        </div>
+    </article><article class="post-excerpt"><h1 class="post-excerpt__title">
+                <a href="/2023/03/eleventy-cool-uris/">Eleventy's Cool URIs</a>
+            </h1><div class="post-excerpt__subtitle">Eleventy's Cool URIs</div><ul><li>
+                        <a href="/tags/web-development">Web Development</a>
+                    </li><li>
+                        <a href="/tags/eleventy">Eleventy</a>
+                    </li></ul>
+        <div class="post-excerpt__excerpt">While getting started with 11ty, I saw in the output folder that an <code>index.md</code>
 file would become <code>index.html</code>, as expected, but <code>README.md</code> became
 <code>README/index.html</code>. I didn't understand why there was a special case for the
-README file.</p>
-<p>It took me a minute, but I <a href="https://www.11ty.dev/docs/permalinks/#cool-uris-dont-change">found it</a>
-with a reference to an article at the W3C stating (among other things) that cool
-URIs don't have file extensions.</p>
-<p>Okay. I get it. I would've expected something like that to be my job, not the
-tool's, but it makes sense and I agree. But what do I do if I really want to
-have a named output file. There's gotta be a way. Well, scroll down. The <code>permalink</code> <em>front matter</em> value allows me to specify the relative URL of the file that will be generated.</p>
-<nav aria-labelledby="pagination">
+README file.<span class="continuation-ellipsis"> ...</span><div><a href="/2023/03/eleventy-cool-uris/">Read More</a></div>
+        </div>
+    </article><nav aria-labelledby="pagination">
   <div id="pagination" class="sr-only">Page Navigation: </div>
   <ol>
     <li><a href="/page-0002/">Previous</a></li><li><a href="/" aria-current="">1</a></li><li><a href="/page-0002/" aria-current="">2</a></li><li><a href="/page-0003/" aria-current="page">3</a></li><li><a href="/page-0004/" aria-current="">4</a></li><li><a href="/page-0005/" aria-current="">5</a></li><li><a href="/page-0006/" aria-current="">6</a></li><li><a href="/page-0007/" aria-current="">7</a></li><li><a href="/page-0008/" aria-current="">8</a></li><li><a href="/page-0009/" aria-current="">9</a></li><li><a href="/page-0010/" aria-current="">10</a></li><li><a href="/page-0011/" aria-current="">11</a></li><li><a href="/page-0012/" aria-current="">12</a></li><li><a href="/page-0013/" aria-current="">13</a></li><li><a href="/page-0014/" aria-current="">14</a></li><li><a href="/page-0015/" aria-current="">15</a></li><li><a href="/page-0016/" aria-current="">16</a></li><li><a href="/page-0004/">Next</a>

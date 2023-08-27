@@ -1,0 +1,14 @@
+{% macro tags_list(post) %}
+    {%- if post.data.tags -%}
+        {%- set tags = post.data.tags | regular_tags -%}
+        {%- if tags.length > 0 -%}
+            <ul>
+                {%- for tag in tags -%}
+                    <li>
+                        <a href="/tags/{{ tag | slugify }}">{{ tag }}</a>
+                    </li>
+                {%- endfor -%}
+            </ul>
+        {%- endif -%}
+    {%- endif -%}
+{% endmacro %}
