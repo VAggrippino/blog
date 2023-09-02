@@ -1,0 +1,81 @@
+<h1>Posts tagged CSS</h1><article class="post">
+        <h2>How to really check with JavaScript if CSS failed to load from a CDN</h2>
+<figure class="wp-block-image size-full">![](https://i0.wp.com/www.aggrippino.com/wp-content/uploads/2019/12/error-loading-min-e1629184314699.jpg?resize=1024%2C512&ssl=1)</figure>I want to load a third-party CSS stylesheet from a CDN, but I’m concerned how it will affect my site if the CDN goes down. *How do I use JavaScript to check if a CSS file has loaded* so I can load a local fallback instead?
+<p>This can’t be a new idea. I can get the answer from a web search, can’t I? …</p>
+<h2>Incorrect Solution #1</h2>
+<p>If I search the web for an answer, I can find many variations of this incorrect solution:</p>
+<div class="incorrect-solution-target"></div>```
+<pre class="EnlighterJSRAW incorrect-solution" data-enlighter-group="" data-enlighter-highlight="" data-enlighter-language="js" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-theme="" data-enlighter-title="">// Just an example:
+cdnUrl = `https://cdnjs.vinceflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css`;
+localUrl = `css/all.min.css`;
+<p>let loaded = false;
+for ( var i = 0; i &lt; document.styleSheets.length, i++ ) {
+if ( document.styleSheets[i].href === cdnUrl ) {
+loaded = true;
+}
+}
+if ( !loaded ) {
+const localCss = document.createElement(<code>link</code>);
+localCss.rel = <code>stylesheet</code>;
+localCss.href = localUrl;
+document.querySelector(<code>head</code>).appendChild(localCss);
+}</p>
+<pre><code>
+If the document’s stylesheets don’t contain one with a URL matching the one from the CDN, add a reference to the local one. It doesn’t work, though. `document.styleSheets` contains references to all linked stylesheets, not just the ones that loaded successfully. Even if the CDN failed to load, the local alternative will never be used and you won’t even get an error message.
+
+## Incorrect Solution #2
+
+&lt;div class=&quot;incorrect-solution-target&quot;&gt;&lt;/div&gt;```
+&lt;pre class=&quot;EnlighterJSRAW incorrect-solution&quot; data-enlighter-group=&quot;&quot; data-enlighter-highlight=&quot;&quot; data-enlighter-language=&quot;js&quot; data-enlighter-linenumbers=&quot;&quot; data-enlighter-lineoffset=&quot;&quot; data-enlighter-theme=&quot;&quot; data-enlighter-title=&quot;&quot;&gt;// Just an example:
+cdnUrl = `https://cdnjs.vinceflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css`;
+localUrl = `css/all.min.css`;
+
+let loaded = false;
+for ( var i = 0; i &amp;lt; document.styleSheets.length, i++ ) {
+  if ( document.styleSheets[i].href === cdnUrl ) {
+    if (document.styleSheets[i].cssRules !== null) {
+      loaded = true;
+    }
+  }
+}
+if ( !loaded ) {
+  const localCss = document.createElement(`link`);
+  localCss.rel = `stylesheet`;
+  localCss.href = localUrl;
+  document.querySelector(`head`).appendChild(localCss);
+}
+</code></pre>
+<p>This one looks a little better… <a href="https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet">CSSStyleSheet</a>s have a <code>cssRules</code> property which shows the rules associated with the stylesheet. If it didn’t load, it’ll be <code>null</code>, right? Wrong. In Firefox, <code>cssRules</code> is an empty array when the stylesheet fails to load. In Google Chrome, you get an “Uncaught DOMException” because a <code>CSSStyleSheet</code> that failed to load doesn’t have a <code>cssRules</code> property.</p>
+<h2>A real solution?</h2>
+<pre><code>&lt;pre class=&quot;EnlighterJSRAW&quot; data-enlighter-group=&quot;&quot; data-enlighter-highlight=&quot;&quot; data-enlighter-language=&quot;js&quot; data-enlighter-linenumbers=&quot;&quot; data-enlighter-lineoffset=&quot;&quot; data-enlighter-theme=&quot;&quot; data-enlighter-title=&quot;&quot;&gt;export function cssFallback(cdnUrl, localPath) {
+  // Create a new link tag and append it to the document head
+  const loadAlternate = () =&amp;gt; {
+    console.log(`Loading ${localPath}.`);
+    const link = document.createElement(`link`);
+    link.rel = `stylesheet`;
+    link.href = localPath;
+    document.querySelector(`head`).appendChild(link);
+  }
+
+  // Identify the CDN stylesheet
+  const stylesheet = Array.from(document.styleSheets).filter((s) =&amp;gt; s.href === cdnUrl)[0];
+
+  try {
+    // If I can access cssRules and it's not empty, the CDN CSS loaded
+    if ( stylesheet.cssRules.length === 0 ) {
+      console.log(`The cssRules for ${cdnUrl} is empty.`)
+      loadAlternate();
+    }
+  } catch (e) {
+    console.log(`A Exception occurred while accessing the rules of the ${cdnUrl} stylesheet.`);
+    console.log(e);
+    loadAlternate();
+  }
+}
+</code></pre>
+<p>If the <code>cssRules</code> is an empty array, the CDN stylesheet failed to load in Mozilla Firefox. If there’s an Exception when we try to access the <code>cssRules</code>, the CDN stylesheet failed to load in Google Chrome.</p>
+
+    </article><nav aria-labelledby="pagination">
+    <div id="pagination" class="sr-only">Page Navigation: </div>
+    <ul><li>1</li></ul>
+</nav>

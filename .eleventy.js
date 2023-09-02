@@ -1,8 +1,55 @@
+// @ts-check
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const dayjs = require('dayjs')
 const lodashChunk = require('lodash.chunk')
 const advancedFormat = require('dayjs/plugin/advancedFormat')
 dayjs.extend(advancedFormat)
+
+/**
+ * Each item in the returned array identifies a tag in use and how many
+ * published posts use that tag.
+ * Posts with only the "post" tag will be counted in an "Uncategorized" tag.
+ *
+ * @returns {Array.<{tag: string, count: number}>}
+ * @param {Object} collection
+ */
+function tags_used (collection) {
+    const post_counts = { "Uncategorized": 0 }
+
+    collection.getAllSorted().forEach(function (item) {
+        if ('tags' in item.data) {
+            /**
+             * If an item has only one tag set, item.data.tags may be a string
+             * instead of an array. Convert an item.data.tags string into an
+             * array or just use it if it's already an array
+             * @type {Array.<string>}
+             */
+            const tags = typeof item.data.tags === 'string' ? [item.data.tags] : item.data.tags
+
+            // Add the item's tags to the set if it has been published
+            if ('published' in item.data && item.data.published) {
+                // If this item only has the "post" tag, count it in the
+                // "Uncategorized" tag
+                if (tags.length === 1 && tags[0] === 'post') {
+                    post_counts["Uncategorized"] += 1
+                } else {
+                    // Exclude the generic "post" tag
+                    const filtered = tags.filter(tag => tag !== 'post')
+                    filtered.forEach((tag) => {
+                        post_counts[tag] = post_counts[tag] ? post_counts[tag] + 1 : 1
+                    })
+                }
+            }
+        }
+    })
+
+    return Object.keys(post_counts).map((tag) => {
+        return {
+            "tag": tag,
+            "count": post_counts[tag],
+        }
+    }).sort((a, b) => b.count - a.count)
+}
 
 module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(syntaxHighlight)
@@ -16,18 +63,6 @@ module.exports = function (eleventyConfig) {
     // Add collections that allow groupings by year/month and year
     eleventyConfig.addCollection('contentByMonth', require('./_utils/collections/contentByDate').contentByMonth)
     eleventyConfig.addCollection('contentByYear', require('./_utils/collections/contentByDate').contentByYear)
-
-    // Return the collections in use excluding those used for special grouping
-    eleventyConfig.addFilter('regular_tags', (tags) => {
-        const excluded = [
-            'all',
-            'post',
-            'contentByMonth',
-            'contentByYear',
-        ]
-
-        return tags.filter((tag) => !excluded.includes(tag))
-    })
 
     // Keys filter from https://github.com/11ty/eleventy/issues/927#issuecomment-585539708
     eleventyConfig.addFilter('keys', obj => Object.keys(obj))
@@ -47,77 +82,31 @@ module.exports = function (eleventyConfig) {
         return dayjs(formatted_month).format('MMMM YYYY')
     })
 
-    // Original version of this code can be found at
-    // https://github.com/11ty/eleventy/issues/332#issuecomment-445236776
-    eleventyConfig.addCollection('doublePagination', function(collection) {
-        // Get unique list of tags
-        // Iterate over all input items and add each items' tags to the set
-        const tagSet = new Set()
-        collection.getAllSorted().map( function(item) {
-            if ( 'tags' in item.data ) {
-                // If an item has only one tag set, item.data.tags may be a string instead of an array
-                // Convert an item.data.tags string into an array or just use it if it's already an array
-                const tags = typeof item.data.tags === 'string' ? [item.data.tags] : item.data.tags
+    // Generates a collection from the tags_used function return value
+    eleventyConfig.addCollection('tags_used', tags_used)
 
-                // Add the item's tags to the set if it has been published
-                if ( item.data.published ) {
-                    // Exclude the generic "post" tag
-                    const filtered = tags.filter(tag => tag !== 'post')
-                    filtered.forEach(tag => tagSet.add(tag))
-                }
-            }
-        })
-
-        // Get each item that matches the tag
+    /**
+     * Generates a list of tag pages. Each item in the list identifies its tag,
+     * page number relative to that tag, and collection item data (as an array
+     * of items)
+     */
+    eleventyConfig.addCollection('paginated_tags', function(collection) {
         const pagination_size = 2
-        const tagMap = []
-        const tagArray = [...tagSet]
+        const tag_pages = []
+        const tags = tags_used(collection).map(tag_object => tag_object.tag)
 
-        tagArray.forEach((tag) => {
+        tags.forEach((tag) => {
             const items = collection.getFilteredByTag(tag).reverse()
-            const pages = lodashChunk(items, pagination_size)
+            const published_items = items.filter(item => item.data.published)
+            const page_chunks = lodashChunk(published_items, pagination_size)
 
-            for ( let page_number = 0; page_number < pages.length; page_number++ ) {
-                const data = pages[page_number]
-                tagMap.push({ tag, page_number, data })
+            for ( let page = 0; page < page_chunks.length; page++ ) {
+                const data = page_chunks[page]
+                tag_pages.push({ tag, page, data })
             }
         })
 
-        return tagMap
-    })
-
-    eleventyConfig.addFilter('sortTags', (collection) => {
-        let tags = Object.keys(collection).filter((tag) => {
-            const excluded = [
-                'all',
-                'post',
-                'months',
-                'years',
-                'doublePagination',
-            ]
-
-            let published = 0
-            if (Array.isArray(collection[tag])) {
-                collection[tag].forEach((item) => {
-                    if (item.data.published) published = published + 1
-                })
-            }
-
-            return (excluded.indexOf(tag) === -1 && published > 0)
-        })
-
-        tags.sort((a, b) => {
-            // Sort tags with the highest number of posts at the top
-            if (collection[a].length < collection[b].length) return 1
-            if (collection[a].length > collection[b].length) return -1
-
-            // If the number of posts are the same, sort by the tag
-            if (a.toLowerCase() > b.toLowerCase()) return 1
-            if (a.toLowerCase() < b.toLowerCase()) return -1
-
-            return 0
-        })
-        return Object.fromEntries(tags.map(tag => [tag, collection[tag].length]))
+        return tag_pages
     })
 
     return {
