@@ -1,0 +1,41 @@
+---
+pagination:
+    data: collections.paginated_tags
+    size: 1
+    alias: tag_page
+permalink: /tags/{{ tag_page.tag | slugify }}/{% if tag_page.page > 0 %}{{ tag_page.page + 1 }}/{% endif %}
+---
+{%- import "post_macros.njk" as posts -%}
+<h1>Posts tagged {{ tag_page.tag }}</h1>
+
+{%- for post in tag_page.data -%}
+    {{- posts.render_post(post) -}}
+{%- endfor -%}
+
+<nav aria-labelledby="pagination">
+    <div id="pagination" class="sr-only">Page Navigation: </div>
+    <ul>
+        {%- for page in collections.paginated_tags -%}
+            {%- if page.tag == tag_page.tag -%}
+                {%- set page_number = page.page -%}
+                {%- set link_number = page_number + 1 -%}
+
+                {%- set link_path = page.tag | slugify -%}
+
+                {%- if page_number > 0 -%}
+                    {%- set link_path = [link_path, "/", link_number] | join -%}
+                {%- endif -%}
+
+                {%- set page_url = ["/tags/", link_path] | join -%}
+
+                <li>
+                    {%- if page.page == tag_page.page -%}
+                        {{- link_number -}}
+                    {%- else -%}
+                        <a href="{{ page_url }}">{{ link_number }}</a>
+                    {%- endif -%}
+                </li>
+            {%- endif -%}
+        {%- endfor -%}
+    </ul>
+</nav>

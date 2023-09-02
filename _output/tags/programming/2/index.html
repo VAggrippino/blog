@@ -1,0 +1,30 @@
+<h1>Posts tagged programming</h1><article class="post">
+        <h2>transitionend Promise</h2>
+<p>I’m working on a page that displays thumbnail images. When I click on a thumbnail I want it to show an <g class="gr_ gr_27 gr-alert gr_spell gr_inline_cards gr_run_anim ContextualSpelling ins-del" data-gr-id="27" id="27">info box</g> containing more image details. I’m using a CSS transition on the <g class="gr_ gr_28 gr-alert gr_spell gr_inline_cards gr_run_anim ContextualSpelling ins-del" data-gr-id="28" id="28">info box</g> and I want to populate the image details while the <g class="gr_ gr_29 gr-alert gr_spell gr_inline_cards gr_run_anim ContextualSpelling ins-del" data-gr-id="29" id="29">info box</g> is hidden. If the <g class="gr_ gr_30 gr-alert gr_spell gr_inline_cards gr_run_anim ContextualSpelling ins-del" data-gr-id="30" id="30">info box</g> is already visible from clicking on a different thumbnail, I need to hide it first and populate the image details after the transition completes.</p>
+<p>Here’s some pseudocode that shows what I want to happen…</p>
+<pre class="language-js"><code class="language-js">thumbnail<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>infoBox<span class="token punctuation">.</span><span class="token function">isVisible</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// hide the info box (CSS transition)</span>
+    <span class="token comment">// after the transition ends, populate the image details</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// populate the image details immediately</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// show the info box (CSS transition)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>The browser triggers a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/transitionend_event"><code>transitionend</code> event</a> when a transition finishes, but it’s not fired at all if the info box is already hidden. A function that hides the element and returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">Promise</a> would be ideal. The Promise would be resolved after the transition completed or immediately if theinfo box was already hidden, but I don’t use JavaScript to hide or show an element. I typically just toggle a <code>hidden</code> class and let the CSS animation do the work, so we can’t determine when the animation has completed.</p>
+<p>I can’t just return a Promise from the event handler for <code>transitionend</code> because I don’t call the event handler. I just pass it as an argument to <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"><code>addEventListener()</code></a> and the browser calls it. But there’s always a way…</p>
+<p>I searched for <em>promises for CSS transition events</em>, but the higher ranking search result has a <strong>fatal flaw</strong>. In a <em>pen</em>1 entitled “CSS Transition End with a Promise”, a Promise <em>is</em> resolved when the transition completes, but <strong>the event handler is never removed from the element</strong>. The code attempts to remove the handler, but <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener"><code>removeEventListener()</code></a> is passed a function that wasn’t attached as the event handler. <strong>The actual event handler is an anonymous function</strong> that calls the function which the author tries to remove. If you use this code it could eventually cause a problem (What kind of problem? How soon? … this needs testing) as new event handlers are infinitely attached to the element.</p>
+<p>I found a good solution on my second attempt at <a href="https://gist.github.com/davej/44e3bbec414ed4665220">this <em>Gist</em></a>). The trick is a function that returns a Promise and makes a CSS (or CSS class) change that causes a transition, then immediately attaches an event handler for the <code>transitionend</code> event in which it removes itself and resolves the promise.</p>
+<p>Here’s my demo inspired by the Gist:</p>
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="pVgjjj" data-user="VAggrippino" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/VAggrippino/pen/pVgjjj">
+  CSS `transitionend` event with a Promise</a> by Vince Aggrippino (<a href="https://codepen.io/VAggrippino">@VAggrippino</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+    </article><nav aria-labelledby="pagination">
+    <div id="pagination" class="sr-only">Page Navigation: </div>
+    <ul><li><a href="/tags/programming">1</a></li><li>2</li></ul>
+</nav>

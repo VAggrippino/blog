@@ -1,5 +1,13 @@
+---
+layout: base.njk
+permalink: /tags/
+---
 <ol>
-{% for tag, posts in collections | sortTags %}
-    <li><a href="/double-pagination/{{ tag | slugify }}">{{ tag }} - {{ posts }} posts</a></li>
-{% endfor %}
+    {% for tag_info in collections.tags_used %}
+        {%- set tag = tag_info.tag -%}
+        {%- set posts = tag_info.count -%}
+        <li>
+            <a href="/tags/{{ tag | slugify }}">{{ tag }} - {{ posts }} posts</a>
+        </li>
+    {% endfor %}
 </ol>
