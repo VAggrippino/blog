@@ -7,6 +7,8 @@ tags:
   - Web Development
   - Eleventy
 ---
+## {{ title }}
+
 While getting started with 11ty, I saw in the output folder that an `index.md`
 file would become `index.html`, as expected, but `README.md` became
 `README/index.html`. I didn't understand why there was a special case for the

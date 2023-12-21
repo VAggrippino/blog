@@ -12,6 +12,8 @@ excerpt: "
   </p>
 "
 ---
+## {{ title }}
+
 [Nunjucks](https://mozilla.github.io/nunjucks/) templating with
 [Eleventy](https://www.11ty.dev/) is a powerful combination for content
 creation but I've noticed an oddity with

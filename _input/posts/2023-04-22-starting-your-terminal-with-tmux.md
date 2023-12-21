@@ -4,6 +4,8 @@ HTMLTitle: "Starting Your Terminal with <code>tmux</code>"
 date: 2023-04-22
 published: true
 ---
+## {{ title }}
+
 I am getting more comfortable with [`tmux`](https://github.com/tmux/tmux/wiki) and I want to make sure I don't forget to use it when I'm at the command prompt. So, I made a simple Bash script to automatically connect to an existing session or start a new session when I start my terminal:
 
 `tmux-start.sh`:

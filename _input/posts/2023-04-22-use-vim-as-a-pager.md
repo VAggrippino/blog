@@ -3,6 +3,8 @@ title: Use Vim as a Pager
 date: 2023-04-22
 published: true
 ---
+## {{ title }}
+
 I wanted to be able to scroll a `man` page in the terminal with my mouse wheel. While looking for a setting to change I learned that Vim can be used as a pager allowing mouse support and much more.
 Inspired by [this entry at the Vim Tips Wiki](https://vim.fandom.com/wiki/Using_vim_as_a_man-page_viewer_under_Unix), I decided to set it up for myself, but with a few minor changes. I did all this in WSL with Ubuntu 20.04.6 and Zsh on Windows 11, but it should work as well with any Unix or Linux variant:
 

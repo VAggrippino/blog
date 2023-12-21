@@ -6,6 +6,8 @@ tags:
   - Eleventy
   - Web Development
 ---
+## {{ title }}
+
 The permalink for all templates in a directory can be set in a template directory data file. This can be used along with data variables to generate the ideal URLs.
 
 For example, if you have pages in a `posts` subdirectory, but you want those pages to be at the root of the generated site, you might use something like this:
