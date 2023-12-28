@@ -57,6 +57,9 @@ module.exports = function (eleventyConfig) {
     // Copy the wp-content folder from the exported WordPress site
     eleventyConfig.addPassthroughCopy('wp-content')
 
+    // Copy the images
+    eleventyConfig.addPassthroughCopy('images')
+
     // Copy the CSS
     eleventyConfig.addPassthroughCopy('css')
 
