@@ -60,6 +60,9 @@ module.exports = function (eleventyConfig) {
     // Copy the images
     eleventyConfig.addPassthroughCopy('images')
 
+    // Copy the favicons
+    eleventyConfig.addPassthroughCopy({ "favicons": "/" })
+
     // Copy the CSS
     eleventyConfig.addPassthroughCopy('css')
 
