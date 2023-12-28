@@ -11,8 +11,6 @@ pagination:
 
 permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 1).toString().padStart(4, 0) }}/{% endif %}index.html"
 ---
-<h1>{{ title | safe }}</h1>
-<div class="subtitle">{{ subtitle | safe }}</div>
 {% for post in posts -%}
     <article class="post">
         <div class="post__date">
