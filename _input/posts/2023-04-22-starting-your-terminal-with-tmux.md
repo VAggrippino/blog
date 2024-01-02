@@ -4,7 +4,21 @@ HTMLTitle: "Starting Your Terminal with <code>tmux</code>"
 date: 2023-04-22
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
 
 I am getting more comfortable with [`tmux`](https://github.com/tmux/tmux/wiki) and I want to make sure I don't forget to use it when I'm at the command prompt. So, I made a simple Bash script to automatically connect to an existing session or start a new session when I start my terminal:
 

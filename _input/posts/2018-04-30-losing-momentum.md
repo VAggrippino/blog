@@ -16,7 +16,22 @@ tags:
     - motivation
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
  I’m losing my momentum. That *new project* enthusiasm is gone and I’m faced with distraction and doubt. What do I do? Choose an easier alternative? Prepare more before continuing? Or push forward at a unique and considerable risk?
 
 <div class="wp-block-jetpack-markdown">The greatest barrier to my employment right now is the lack of a good portfolio. With this in mind, I put together a list of projects to build that I think will demonstrate the full range of my skills… Copies of existing sites with unique modifications… Re-creations of old sites with my own perspective on how they should be built today… And, some original ideas. These are all high-quality, broadly scoped projects targeting real use cases. They are *not* quick one or two day jobs.

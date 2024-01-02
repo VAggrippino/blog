@@ -10,9 +10,24 @@ inline_featured_image:
     - '0'
 categories:
     - 'Social Media'
-published: true
+published: false
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
 
 I subscribe / follow / participate in a lot of technology focused forums and groups throughout the World Wide Web. It is my feeling that they should be good places to make friends and ask questions of people who have similar interests and knowledge to share.
 

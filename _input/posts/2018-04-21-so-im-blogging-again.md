@@ -15,7 +15,22 @@ tags:
     - blogging
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
 <figure class="wp-block-pullquote is-style-default">
 
 > I'm back in the saddle again   

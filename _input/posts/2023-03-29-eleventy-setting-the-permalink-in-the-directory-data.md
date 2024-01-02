@@ -6,7 +6,21 @@ tags:
   - Eleventy
   - Web Development
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
 
 The permalink for all templates in a directory can be set in a template directory data file. This can be used along with data variables to generate the ideal URLs.
 

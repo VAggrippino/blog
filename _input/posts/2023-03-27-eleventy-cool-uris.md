@@ -7,7 +7,21 @@ tags:
   - Web Development
   - Eleventy
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
 
 While getting started with 11ty, I saw in the output folder that an `index.md`
 file would become `index.html`, as expected, but `README.md` became

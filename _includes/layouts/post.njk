@@ -1,13 +1,8 @@
 ---
 layout: base.njk
 ---
-{% if image -%}
-    {% set alt = 'Image imported from WordPress blog' %}
-    {% if imageAlt %}
-        {% set alt = imageAlt %}
-    {% endif %}
+<main class="post">
 
-    <img alt="{{ alt }}" src="{{ image }}">
-{% endif %}
-<div class="post__date">Date: {% formatted_date date %}</div>
-{{ content | safe }}
+    {{ content | safe }}
+
+</main>

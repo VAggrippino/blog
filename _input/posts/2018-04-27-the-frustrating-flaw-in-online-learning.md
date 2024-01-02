@@ -17,7 +17,22 @@ tags:
     - online
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
  Online courses all seem to share one flaw… To put it bluntly, they piss me off… Inconsistent information, outdated materials, poor explanation of key concepts, and, sometimes, patently incorrect information. But if I stop to think about it for a moment, it’s actually a feature.
 
 <div class="wp-block-jetpack-markdown">I’ve taken advantage of **a lot** of online curriculum. I’ve been active at freeCodeCamp, Udemy, Udacity, [Codecademy](https://www.codecademy.com/profiles/vaggrippino), [Code School](https://app.pluralsight.com/profile/vince-aggrippino), Coursera, [Khan Academy](https://www.khanacademy.org/profile/vaggrippino/), and edX, just to name a few.

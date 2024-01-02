@@ -16,7 +16,22 @@ tags:
     - wordpress
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
 I’ve been putting some effort into bringing my blog back to life. I’d like it to be a source of income, so I started looking into Google AdSense.
 
 A few days later, I received an email telling me “Your site isn’t ready to show ads” because of a violation of Google’s Site Behavior policy regarding navigation:

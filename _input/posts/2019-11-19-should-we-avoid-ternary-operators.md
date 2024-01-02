@@ -19,7 +19,22 @@ tags:
     - programming
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
 <figure class="wp-block-image size-large">![](https://i0.wp.com/www.aggrippino.com/wp-content/uploads/2021/08/ternary_operator_carbon.jpg?resize=1024%2C512&ssl=1)</figure>I recently read a Facebook post which suggested it was better to use a ternary operator instead of an if…else statement whenever the result would be a single line of code. That doesn’t seem right.
 
 I’ve noticed this trend toward shorter, smaller code, and I understand the appeal. If I can do in one line of code what used to take six lines, it feels more efficient. However, when it comes to executing the code, there’s no performance difference between an if…else statement and a ternary operator.

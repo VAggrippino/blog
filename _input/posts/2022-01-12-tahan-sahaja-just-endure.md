@@ -19,7 +19,22 @@ tags:
     - pain
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
 <div class="wp-block-image"><figure class="aligncenter size-full">![Pain Header](https://i0.wp.com/www.aggrippino.com/wp-content/uploads/2022/01/Pain_Header.jpg?resize=500%2C250&ssl=1)</figure></div>> Pain!  
 > You break me down, you build me up, believer, believer
 > 

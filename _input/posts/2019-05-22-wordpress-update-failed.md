@@ -18,7 +18,22 @@ tags:
     - wordpress
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
 <div class="wp-block-image"><figure class="aligncenter">![WordPress update error message](https://i0.wp.com/www.aggrippino.com/wp-content/uploads/2019/05/20190522_101438_WordPress_Update_failed-min.png?resize=661%2C300&ssl=1)</figure></div><div style="background-color: beige; padding: 0 1rem 1rem 1rem; margin: 1rem; box-shadow: 0 0.25rem 0.25rem 1px rgba(0, 0, 0, 0.3);">## tl;dr
 
  When WordPress fails to do something automatically, it’s almost always a permissions problem. This is no exception.

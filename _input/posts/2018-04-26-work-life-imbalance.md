@@ -17,7 +17,22 @@ tags:
     - motivation
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
 You’re watching YouTube when you see a strange video entitled “No matter what, the work stays on!” …
 
 The scene opens to a large set of balance scales resting on a low platform. A man puts a big shiny metal weight embossed with the word “work” on the left side of the scales. Next to it, he puts another weight. This one is marked “learning”.

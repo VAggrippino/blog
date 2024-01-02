@@ -14,7 +14,22 @@ tags:
     - wordpress
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
 <figure class="alignleft">
 
   ![](/wp-content/uploads/2019/05/20190521_063318_WordPress_Insert_Image_from_URL_252x252-min.png)

@@ -19,5 +19,20 @@ tags:
 format: status
 published: true
 ---
-## {{ title }}
+
+{% set _image_alt = title %}
+{% if image_alt %}
+    {% set _image_alt = image_alt %}
+{% endif %}
+
+{% if image %}
+    <figure class="post__image">
+        <img src="{{ image }}" alt="{{ _image_alt }}">
+    </figure>
+{% endif %}
+
+## [{{ title }}]({{ page.url }})
+
+<p class="post__date">{% formatted_date data.date %}</p>
+
 Considering #WordPress Plugin Development? Do a [search on GitHub for “*WordPress plugin*“](https://github.com/search?q=wordpress+plugin&type=Repositories) and find all the sample code you ever wanted.
