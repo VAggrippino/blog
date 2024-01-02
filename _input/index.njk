@@ -6,28 +6,28 @@ subtitle: "by Vince Aggrippino"
 pagination:
   data: collections.post
   reverse: true
-  size: 2
+  size: 3
   alias: posts
 
 permalink: "/{% if pagination.pageNumber > 0 %}page-{{ (pagination.pageNumber + 1).toString().padStart(4, 0) }}/{% endif %}index.html"
 ---
-{% for post in posts -%}
-    <article class="post">
-        <div class="post__date">
-            {%- formatted_date post.data.date -%}
-        </div>
-        {%- if post.data.image -%}
-            <img src="{{ post.data.image }}" alt="{{ post.data.image-alt }}">
-        {%- endif -%}
+<main class="index">
+    {% for post in posts -%}
+        {% set image_alt = post.data.title %}
+        {% if post.data.image-alt %}
+            {% set image_alt = post.data.image-alt %}
+        {% endif %}
 
-        {%- if post.data.excerpt -%}
-            {{- post.data.excerpt | safe -}}
-            <a href="{{ post.page.url }}">Read More...</a>
-        {%- else -%}
-            {{- post.content | safe -}}
-        {%- endif -%}
-    </article>
-{%- endfor -%}
+        <article>
+            {%- if post.data.excerpt -%}
+                {{- post.data.excerpt | safe -}}
+                <a href="{{ post.page.url }}">Read More...</a>
+            {%- else -%}
+                {{- post.content | safe -}}
+            {%- endif -%}
+        </article>
+    {%- endfor -%}
+</main>
 
 <div class="archives">
     <h4>Content Archives</h4>
